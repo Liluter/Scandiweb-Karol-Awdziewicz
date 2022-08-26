@@ -1,10 +1,11 @@
 import React from 'react'
-import '../styles/App.css';
+import '../styles/App.scss';
 import Categories from './Categories';
 import Basket from './Basket';
 import New from './New'
 import Newer from './Newer';
 import Newgraph from './Newgraph';
+
 
 class App extends React.Component {
   render() {
