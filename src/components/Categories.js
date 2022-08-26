@@ -1,5 +1,6 @@
 import React from 'react'
 import {gql} from '@apollo/client'
+import {ApolloConsumer} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
 
 const CATEGORIES = gql`
@@ -16,20 +17,37 @@ query TakeProducts {
 
 
 class Categories extends React.Component {
-  
+
   render() {
-    return (<>
+    return (
+    <>
       <div>Categories Component</div>
-      {/* <Query query={CATEGORIES}>
+      <ApolloConsumer>
+      {client => (
+      <button
+        onClick={() => client.query({query: CATEGORIES}).then(res => console.log(res))}
+      >
+        CLICK
+      </button>
+      )}
+      </ApolloConsumer>
+      <div>---------------</div>
+      <Query query={CATEGORIES} >
           {({loading, data})=>{
-            if(loading) return "Loading...";
+            if (loading) return "Loading...";
             const { categories } = data;
-            return categories.map((cat,index) => <h1 key={index}>{cat.name}</h1>)
+    
+            return (<ul>{categories.map((cat, index) => <li key={index}>{cat.name}</li>)}</ul>)
           }}
-        </Query> */}
-          </>
+      </Query>
+    </>
     )
   }
 }
 
-export default Categories
+export default Categories;
+
+// client
+//   .query({query: CATEGORIES})
+//   .then(res => console.log(res))
+// console.log(client)

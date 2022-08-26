@@ -27,7 +27,7 @@ query TakeProducts {
 // client
 //   .query({query: CATEGORIES})
 //   .then(res => console.log(res))
-console.log(client)
+// console.log(client)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

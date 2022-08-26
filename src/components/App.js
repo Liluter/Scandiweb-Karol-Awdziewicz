@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/App.css';
 import Categories from './Categories';
-
+import Basket from './Basket';
+import New from './New'
+import Newer from './Newer';
+import Newgraph from './Newgraph';
 
 class App extends React.Component {
   render() {
@@ -9,6 +12,10 @@ class App extends React.Component {
       <div >
         <h1>Hello world</h1>
         <Categories/>
+        <Basket></Basket>
+        <New></New>
+        <Newer> </Newer>
+        <Newgraph></Newgraph>
       </div>
     );
   }
