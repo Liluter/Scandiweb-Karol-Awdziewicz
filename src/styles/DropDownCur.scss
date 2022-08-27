@@ -1,0 +1,40 @@
+.dropDownCur{
+display:flex;
+flex-direction: column;
+justify-content: space-evenly;
+position: absolute;
+
+width: 114px;
+height: 280px;
+top: 65px;
+right: 78px;
+font-weight: 500;
+font-size: 18px;
+line-height: 160%;
+background: #FFFFFF;
+filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+
+  &-row {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 45px;
+    background-color: #ffffff;
+    color: #1D1F22;
+  
+    &__cell{
+      height:29px;
+    }
+  }
+  &-row:hover{
+    height: 45px;
+    background-color: #EEEEEE;
+  }
+
+}
+
+@media screen and ( max-width: 600px) {
+  .dropDownCur{
+    right: 10px;
+  }
+}

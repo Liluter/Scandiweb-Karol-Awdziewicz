@@ -1,23 +1,26 @@
 import React from 'react'
 import '../styles/App.scss';
 import Categories from './Categories';
-import Basket from './Basket';
-import New from './New'
-import Newer from './Newer';
-import Newgraph from './Newgraph';
 import Navigation from './Navigation';
 
+
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={};
+
+    this.categorySelect = this.categorySelect.bind(this)
+  }
+
+  categorySelect(e){
+    console.log(e.target)
+  }
+
   render() {
     return (
-      <main >
+      <main className='container'>
         <Navigation></Navigation>
-        <h1>Hello world</h1>
-        <Categories/>
-        <Basket></Basket>
-        <New></New>
-        <Newer> </Newer>
-        <Newgraph></Newgraph>
+        <Categories categorySelect={this.categorySelect}/>
       </main>
     );
   }

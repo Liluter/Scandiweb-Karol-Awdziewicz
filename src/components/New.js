@@ -19,7 +19,7 @@ class New extends Component {
   render() {
     return (
       <div>
-        New One Two
+        New.js
       </div>
     )
   }

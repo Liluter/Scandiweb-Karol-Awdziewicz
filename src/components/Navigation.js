@@ -1,31 +1,68 @@
 import React, { Component } from 'react'
 import '../styles/Navigation.scss'
-import Logo from './Logo'
+import {gql} from '@apollo/client'
+import {Query} from '@apollo/client/react/components'
+import {ReactComponent as BrandLogo} from '../assets/brandLogo.svg'
+import {ReactComponent as EmptyCart} from '../assets/emptyCart.svg'
+import {ReactComponent as Caret} from '../assets/caretUp.svg'
+import DropDownCur from './DropDownCur';
+
+const CATEGORIES=gql`
+query TakeCategory {
+  categories {
+    name
+  }
+}
+`
+
 
 export class Navigation extends Component {
+  constructor(props){
+    super(props);
+    this.state = {toggleDropdown: false,
+                  curentCurrency: "$"};
+    
+    // this.state = {toggleCart: false};
+    this.dropDownMenu = this.dropDownMenu.bind(this);
+    this.changeCurrency = this.changeCurrency.bind(this);
+  }
+  
+  changeCurrency(currency){
+    this.setState({curentCurrency: currency})
+  }
+
+  dropDownMenu(e){
+    this.setState({toggleDropdown: !this.state.toggleDropdown});
+  }
+
   render() {
     return (
-      <navigation className={"Navbar"}>
+      <nav className="navbar">
         <div className='nav-row'>
           <menu className='nav-menu__cat'>
-            <ul>
-              <li><span>WOMEN</span></li>
-              <li><span>MEN</span></li>
-              <li><span>KIDS</span></li>
-            </ul>
+              <Query query={CATEGORIES} >
+                {({loading, data})=>{
+                  if (loading) return "Loading...";
+                  const { categories } = data;
+                  return (<ul>{categories.map((cat, index) => <li key={index} >{(cat.name).toUpperCase()}</li>)}</ul>)
+                }}
+              </Query>
           </menu>
         </div>
-        <div className='nav-row'><Logo/></div>
+        <div className='nav-row'><BrandLogo/></div>
         <div className='nav-row'>
-          <menu className='nav-menu__cart'>
-          <ul>
-              <li><span>CUR</span></li>
-              <li><span>CART</span></li>
+          <menu className='nav-menu__cart' >
+            <ul>
+              <li onClick={this.dropDownMenu} >
+                <span>{this.state.curentCurrency}</span>
+                {this.state.toggleDropdown ? <DropDownCur changeCurrency={this.changeCurrency}/> : null}
+                </li>
+              <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
+              <li><EmptyCart/></li>
             </ul>
           </menu>
         </div>
-
-      </navigation>
+      </nav> 
     )
   }
 }

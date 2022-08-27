@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {Query} from '@apollo/client/react/components'
 import {gql} from '@apollo/client'
-import './styles/index.scss';
+import './styles/Index.scss';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 

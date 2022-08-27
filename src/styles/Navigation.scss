@@ -1,6 +1,5 @@
-.Navbar {
+.navbar {
   display: flex;
-  
   align-items: center;
   background: #ffffff;
   color: red;
@@ -45,15 +44,65 @@ height:100%;
   height:100%;
   align-items: center;
   padding: 0 16px 0 16px;
+  transition: box-shadow, color,  250ms ease;
   }
   & li:hover {
   color: #5ECE7B;
-  cursor:default;
-  border-bottom: 2px solid #5ECE7B;
+  cursor:pointer;
+  box-shadow: inset 0px -2px 0px 0px #5ECE7B;
   }
 }
 
 .nav-menu__cart {
-
+  height:100%;
+  & ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #1D1F22;
+  height: 100%;
+  }
+  & li {
+  display:flex;
+  align-items: center;
+  height:100%;
+  align-items: center;
+  padding: 0 11px 0 11px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  & li.caret{
+    padding: 0 11px 0 0;
+  }
+  & .caret{
+    transition: 200ms ease;
+  }
+  & .caret.open {
+    transform: rotateX(180deg);
+  }
+  & li:hover {
+  cursor:pointer;
+  }
 }
 
+@keyframes flip-down {
+  0% { transform: rotateX(0deg)  }
+  100% {transform: rotateX(180deg)}
+}
+
+@media screen and ( max-width: 600px) {
+  .navbar {
+    padding: 0 10px 0 10px;
+  }
+}
+@media screen and ( min-width: 1440px) {
+  .navbar {
+    width:1440px;
+  }
+}
