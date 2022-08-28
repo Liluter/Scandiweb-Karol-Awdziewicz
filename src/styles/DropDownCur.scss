@@ -38,3 +38,13 @@ filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
     right: 10px;
   }
 }
+
+@media screen and ( min-width: 1440px) {
+  .dropDownCur{
+    position: absolute;
+    width: 114px;
+    height: 280px;
+    top: 65px;
+    right: calc(78px + (100vw - 1440px) / 2);
+  }
+}

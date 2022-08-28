@@ -1,9 +1,9 @@
-.category-container{
+.category{
   padding: 0 100px 0 100px;
   margin-top:80px;
 }
 
-.category-title{
+.category__title{
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
@@ -13,9 +13,9 @@
 }
 
 @media screen and ( max-width: 600px) {
-  .category-container{
-    padding: 0 10px 0 10px;
-    margin-top:40px;
+  .category{
+    padding: 0 16px 0 16px;
+    margin-top: 40px;
   }
   
 }

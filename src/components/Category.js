@@ -1,7 +1,8 @@
 import React from 'react'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
-import '../styles/Categories.scss'
+import ProductCards from './ProductCards'
+import '../styles/Category.scss'
 
 const CATEGORIES = gql`
 query TakeProducts {
@@ -14,19 +15,19 @@ query TakeProducts {
 }
 `;
 
-class Categories extends React.Component {
+class Category extends React.Component {
   constructor(props){
     super(props);
     this.state={}
   }
   componentDidMount(){
-    console.log(this.props)
+    console.log('Category mount',this.props)
   }
 
   render() {
     return (
-    <main className='category-container'>
-      <header className='category-title'><span>Category name</span></header>
+    <main className='category'>
+      <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
       <Query query={CATEGORIES} >
           {({loading, data})=>{
             if (loading) return "Loading...";
@@ -34,13 +35,14 @@ class Categories extends React.Component {
             return (<ul>{categories.map((cat, index) => <li key={index} >{cat.name}</li>)}</ul>)
           }}
       </Query>
-      <h2> Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla </h2>
+      <h2> Bla Bla Bla Bla Bla Bla Bla Bla  </h2>
+      <ProductCards category={this.props.category}/>
     </main>
     )
   }
 }
 
-export default Categories;
+export default Category;
 
 // client
 //   .query({query: CATEGORIES})
