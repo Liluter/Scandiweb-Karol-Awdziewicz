@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ProductCard from './ProductCard'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
+import '../styles/ProductCards.scss'
 
 export class ProductCards extends Component {
   constructor(props){
@@ -9,13 +10,16 @@ export class ProductCards extends Component {
     this.state = {}
   }
 
-  
+
   render() {
     return (
-      <>
-      <div>ProductCards od cat : {this.props.category}</div>
+      <div className='productCards'>
       <ProductCard/>
-      </>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      <ProductCard/>
+      </div>
     )
   }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
 import {ReactComponent as BrandLogo} from '../assets/brandLogo.svg'
-import {ReactComponent as EmptyCart} from '../assets/emptyCart.svg'
+import {ReactComponent as CartIcon} from '../assets/CartIcon.svg'
 import {ReactComponent as Caret} from '../assets/caretUp.svg'
 import DropDownCur from './DropDownCur';
 import '../styles/Navigation.scss'
@@ -31,7 +31,8 @@ export class Navigation extends Component {
   }
   
   componentDidMount(){
-    console.log('Navigation mount',this.props)
+    console.log('Navigation mount',this.props);
+    console.log('Navigation state',this.state);
   }
 
   changeCurrency(currency){
@@ -68,7 +69,7 @@ export class Navigation extends Component {
                 </li>
               <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
               <li>
-                <EmptyCart/>
+                <CartIcon/>
                 {this.state.cartCounter > 0 ? <div className='cartCounter'>{this.state.cartCounter}</div> : null}
               </li>
             </ul>

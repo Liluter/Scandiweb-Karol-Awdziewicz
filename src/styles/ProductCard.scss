@@ -1,0 +1,48 @@
+.productCard{
+  display: flex;
+  flex-direction: column;
+  width: 386px;
+  height:444px;
+  background-color: #ffffff;
+  padding: 11px 0 0 16px;
+  // opacity: 0.5;
+  // &:hover{
+  //   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  // }
+  &:active, &:hover{
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  }
+
+  &__image {
+    width: 356px;
+    height: 338px;
+    background-color: orange;
+    // opacity: 0.5; //out of stock
+  }
+  &__name{
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 160%;
+    color: #1D1F22;
+  }
+  &__price{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+    text-align: left;
+    color: #1D1F22;
+  }
+  &__Btn{
+    align-self: flex-end;
+    position: relative;
+    top: -26px;
+    right: 19px;
+    width: 24px;
+    height: 24px;
+  
+    &--pushToCart{
+    position: absolute;
+    right: 10px;
+    }
+  }
+}

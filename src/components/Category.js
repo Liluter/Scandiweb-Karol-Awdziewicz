@@ -28,14 +28,6 @@ class Category extends React.Component {
     return (
     <main className='category'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
-      <Query query={CATEGORIES} >
-          {({loading, data})=>{
-            if (loading) return "Loading...";
-            const { categories } = data;
-            return (<ul>{categories.map((cat, index) => <li key={index} >{cat.name}</li>)}</ul>)
-          }}
-      </Query>
-      <h2> Bla Bla Bla Bla Bla Bla Bla Bla  </h2>
       <ProductCards category={this.props.category}/>
     </main>
     )
