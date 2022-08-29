@@ -8,9 +8,15 @@ import Navigation from './Navigation';
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state={category: 'all'};
+    this.state={category: 'all',
+                currentCurency: "$"};
 
     this.categorySelect = this.categorySelect.bind(this)
+    this.changeCurrency = this.changeCurrency.bind(this);
+  }
+
+  changeCurrency(sign){
+    this.setState({currentCurency: sign})
   }
 
   categorySelect(cat){
@@ -20,12 +26,12 @@ class App extends React.Component {
   render() {
     return (
       <main className='container'>
-        <Navigation categorySelect={this.categorySelect}></Navigation>
+        <Navigation categorySelect={this.categorySelect} changeCurrency={this.changeCurrency} currentCurency={this.state.currentCurency}></Navigation>
         <Routes>
-          <Route path="/" element={<Category category={'all'} />}/>
-          <Route path="/all" element={<Category category={this.state.category}/>}/>
-          <Route path="/clothes" element={<Category category={this.state.category}/>}/>
-          <Route path="/tech" element={<Category category={this.state.category}/>}/>
+          <Route path="/" element={<Category category={'all'} currentCurency={this.state.currentCurency} />}/>
+          <Route path="/all" element={<Category category={this.state.category} currentCurency={this.state.currentCurency}/>}/>
+          <Route path="/clothes" element={<Category category={this.state.category} currentCurency={this.state.currentCurency}/>}/>
+          <Route path="/tech" element={<Category category={this.state.category} currentCurency={this.state.currentCurency}/>}/>
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
               <h3>There's nothing here!</h3>

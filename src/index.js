@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {Query} from '@apollo/client/react/components'
 import {gql} from '@apollo/client'
-import './styles/Index.scss';
+import './styles/index.scss';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,16 +13,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-const CATEGORIES = gql`
-query TakeProducts {
-  categories {
-    name
-    products {
-      name
-    }
-  }
-}
-`;
+// const CATEGORIES = gql`
+// query TakeProducts {
+//   categories {
+//     name
+//     products {
+//       name
+//     }
+//   }
+// }
+// `;
 
 // client
 //   .query({query: CATEGORIES})

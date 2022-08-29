@@ -4,16 +4,6 @@ import {Query} from '@apollo/client/react/components'
 import ProductCards from './ProductCards'
 import '../styles/Category.scss'
 
-const CATEGORIES = gql`
-query TakeProducts {
-  categories {
-    name
-    products {
-      name
-    }
-  }
-}
-`;
 
 class Category extends React.Component {
   constructor(props){
@@ -23,20 +13,18 @@ class Category extends React.Component {
   componentDidMount(){
     console.log('Category mount',this.props)
   }
+  componentDidUpdate(){
+    console.log('Category update',this.props)
+  }
 
   render() {
     return (
     <main className='category'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
-      <ProductCards category={this.props.category}/>
+      <ProductCards category={this.props.category} currentCurency={this.props.currentCurency}/>
     </main>
     )
   }
 }
 
 export default Category;
-
-// client
-//   .query({query: CATEGORIES})
-//   .then(res => console.log(res))
-// console.log(client)

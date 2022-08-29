@@ -5,6 +5,7 @@
   height:444px;
   background-color: #ffffff;
   padding: 11px 0 0 16px;
+  transition: all  250ms ease;
   // opacity: 0.5;
   // &:hover{
   //   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
@@ -16,7 +17,8 @@
   &__image {
     width: 356px;
     height: 338px;
-    background-color: orange;
+    background-color: #ffffff;
+    cursor: pointer;
     // opacity: 0.5; //out of stock
   }
   &__name{
@@ -24,6 +26,7 @@
     font-size: 18px;
     line-height: 160%;
     color: #1D1F22;
+    cursor: default;
   }
   &__price{
     font-weight: 500;
@@ -31,6 +34,7 @@
     line-height: 160%;
     text-align: left;
     color: #1D1F22;
+    cursor: default;
   }
   &__Btn{
     align-self: flex-end;
@@ -43,6 +47,7 @@
     &--pushToCart{
     position: absolute;
     right: 10px;
+    cursor: pointer;
     }
   }
 }
