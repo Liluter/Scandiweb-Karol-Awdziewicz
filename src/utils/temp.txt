@@ -1,0 +1,26 @@
+from index.js
+
+// const CATEGORIES = gql`
+// query TakeProducts {
+//   categories {
+//     name
+//     products {
+//       name
+//     }
+//   }
+// }
+// `;
+
+// client
+//   .query({query: CATEGORIES})
+//   .then(res => console.log(res))
+// console.log(client)
+
+
+{/* <Query query={CATEGORIES}>
+          {({loading, data})=>{
+            if(loading) return "Loading...";
+            const { categories } = data;
+            return categories.map((cat,index) => <h1 key={index}>{cat.name}</h1>)
+          }}
+        </Query> */}

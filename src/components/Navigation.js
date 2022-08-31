@@ -8,6 +8,9 @@ import {ReactComponent as Caret} from '../assets/caretUp.svg'
 import DropDownCur from './DropDownCur';
 import '../styles/Navigation.scss'
 
+import { connect } from 'react-redux';  
+import { addTodo } from '../redux/action' // action dispaych
+
 const CATEGORIES=gql`
 query TakeCategory {
   categories {
@@ -21,20 +24,25 @@ export class Navigation extends Component {
   constructor(props){
     super(props);
     this.state = {toggleDropdown: false,
-                  currentCurency: "$",
-                  cartCounter: "3"};
+                //  currentCurency: "$", turn off from props
+                  cartCounter: "3",
+                  input: 'input'}; // redux
     
     // this.state = {toggleCart: false};
     this.dropDownMenu = this.dropDownMenu.bind(this);
-    // this.changeCurrency = this.changeCurrency.bind(this);
     
+    // this.changeCurrency = this.changeCurrency.bind(this);
   }
   
+
+
   // componentDidMount(){
   //   console.log('Navigation mount',this.props);
   //   console.log('Navigation state',this.state);
   // }
-
+    // componentDidUpdate(){
+    //   console.log('Navigation state',this.state);
+    // }
   // changeCurrency(currency){
   //   this.setState({currentCurency: currency})
   // }
@@ -68,7 +76,7 @@ export class Navigation extends Component {
                 {this.state.toggleDropdown ? <DropDownCur changeCurrency={this.props.changeCurrency}/> : null}
                 </li>
               <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
-              <li>
+              <li >
                 <CartIcon/>
                 {this.state.cartCounter > 0 ? <div className='cartCounter'>{this.state.cartCounter}</div> : null}
               </li>
@@ -79,5 +87,5 @@ export class Navigation extends Component {
     )
   }
 }
-
-export default Navigation
+           //redux HOC State  Dispatch  Component
+export default connect(null, {addTodo})(Navigation)
