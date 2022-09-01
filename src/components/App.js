@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={category: 'all',
-                currentCurency: "$"};
+                currentCurency: "$"}; // to remove redux will take care
 
     this.categorySelect = this.categorySelect.bind(this)
     this.changeCurrency = this.changeCurrency.bind(this);

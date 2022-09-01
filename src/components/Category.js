@@ -10,18 +10,21 @@ class Category extends React.Component {
     super(props);
     this.state={}
   }
-  componentDidMount(){
-    console.log('Category mount',this.props)
-  }
-  componentDidUpdate(){
-    console.log('Category update',this.props)
-  }
+  // componentDidMount(){
+  //   console.log('Category mount',this.props)
+  // }
+  // componentDidUpdate(){
+  //   console.log('Category update',this.props)
+  // }
 
   render() {
     return (
     <main className='category'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
-      <ProductCards category={this.props.category} currentCurency={this.props.currentCurency}/>
+      <ProductCards 
+      category={this.props.category} 
+      currentCurency={this.props.currentCurency}
+      />
     </main>
     )
   }

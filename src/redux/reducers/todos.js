@@ -1,9 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_TODO, TOGGLE_TODO } from "../actionTypes";
+import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO } from "../actionTypes";
 
 const initialState = {
   allIds: [],
-  byIds: {}
+  byIds: {},
+  currency: '$',
 };
 
 export default function (state = initialState, action) {
@@ -35,7 +36,16 @@ export default function (state = initialState, action) {
         }
       };
     }
+    case TOGGLE_CURRENCY: {
+      const { currency } = action.payload;
+      return {
+        ...state,
+        currency: currency
+        
+      };
+    }
     default:
       return state;
+    
   }
 }

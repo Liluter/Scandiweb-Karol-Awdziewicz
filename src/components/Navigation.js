@@ -9,7 +9,8 @@ import DropDownCur from './DropDownCur';
 import '../styles/Navigation.scss'
 
 import { connect } from 'react-redux';  
-import { addTodo } from '../redux/action' // action dispaych
+// import { addTodo } from '../redux/action' // action dispaych
+import { getCurrentCurrency } from '../redux/selectors'
 
 const CATEGORIES=gql`
 query TakeCategory {
@@ -36,16 +37,17 @@ export class Navigation extends Component {
   
 
 
-  // componentDidMount(){
-  //   console.log('Navigation mount',this.props);
-  //   console.log('Navigation state',this.state);
-  // }
-    // componentDidUpdate(){
-    //   console.log('Navigation state',this.state);
-    // }
-  // changeCurrency(currency){
-  //   this.setState({currentCurency: currency})
-  // }
+  componentDidMount(){
+    console.log('Navigation mount',this.props);
+    console.log('Navigation state',this.state);
+  }
+    componentDidUpdate(){
+      console.log('Navigation mount',this.props);
+      console.log('Navigation state',this.state);
+    }
+  changeCurrency(currency){
+    this.setState({currentCurency: currency})
+  }
 
   dropDownMenu(e){
     this.setState({toggleDropdown: !this.state.toggleDropdown});
@@ -88,4 +90,4 @@ export class Navigation extends Component {
   }
 }
            //redux HOC State  Dispatch  Component
-export default connect(null, {addTodo})(Navigation)
+export default connect(state => ({currencyProp: getCurrentCurrency(state)}) )(Navigation)

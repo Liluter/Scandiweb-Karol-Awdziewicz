@@ -4,7 +4,7 @@ import {Query} from '@apollo/client/react/components'
 import '../styles/DropDownCur.scss';
 
 import { connect } from 'react-redux';  
-import { addTodo } from '../redux/action' // action dispaych
+import { addTodo, toggleCurrency } from '../redux/action' // action dispaych
 
 const CURRENCIES = gql`
 query getCurrenciesList{
@@ -22,10 +22,22 @@ export class DropDownCur extends Component {
     this.currSignToStore = this.currSignToStore.bind(this)
   }
 
- // to redux
-currSignToStore = (payload) => {
-  this.props.addTodo(payload)
-}
+  // componentDidMount(){
+  //   console.log('Dropdown mount',this.props);
+    
+  // }
+  componentWillUnmount(){
+    console.log('Dropdown unmount props',this.props);
+    
+  }
+
+  // to redux
+  // currSignToStore = (payload) => {
+  //   this.props.addTodo(payload)
+  // }
+  currSignToStore = (payload) => {
+    this.props.toggleCurrency(payload)
+  }
 
   render() {
     return (
@@ -42,5 +54,5 @@ currSignToStore = (payload) => {
   }
 }
 
-export default connect(null, {addTodo})(DropDownCur)
+export default connect(null, {addTodo, toggleCurrency})(DropDownCur)
 

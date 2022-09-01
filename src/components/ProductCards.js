@@ -34,9 +34,9 @@ export class ProductCards extends Component {
   }
 
 
-  componentDidMount(){
-    console.log('Product Cards mount',this.props);
-  }
+  // componentDidMount(){
+  //   console.log('Products Cards mount',this.props);
+  // }
 
   render() {
     return (
