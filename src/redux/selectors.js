@@ -1,6 +1,6 @@
 // import { VISIBILITY_FILTERS } from "../constants";
 
-export const getTodosState = store => store.todos;
+export const getTodosState = store => store.shop;
 
 export const getTodoList = store =>
   getTodosState(store) ? getTodosState(store).allIds : [];
@@ -28,4 +28,4 @@ export const getTodos = store =>
 //   }
 // };
 
-export const getCurrentCurrency = store => store.todos.currency;
+export const getCurrentCurrency = store => store.shop.currentCurrency;  

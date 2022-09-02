@@ -34,9 +34,9 @@ export class ProductCards extends Component {
   }
 
 
-  // componentDidMount(){
-  //   console.log('Products Cards mount',this.props);
-  // }
+  componentDidMount(){
+    console.log('Products Cards mount',this.props);
+  }
 
   render() {
     return (
@@ -45,7 +45,7 @@ export class ProductCards extends Component {
           {({loading, data})=>{
             if (loading) return "Loading...";
             const { category} = data;
-            return (<>{category.products.map((product,index)=> <ProductCard key={product.id} product={product} currentCurency={this.props.currentCurency} />)}</>)
+            return (<>{category.products.map((product,index)=> <ProductCard key={product.id} product={product}  />)}</>)
           }}
       </Query>
       </div>

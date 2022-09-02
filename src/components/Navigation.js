@@ -25,29 +25,21 @@ export class Navigation extends Component {
   constructor(props){
     super(props);
     this.state = {toggleDropdown: false,
-                //  currentCurency: "$", turn off from props
-                  cartCounter: "3",
-                  input: 'input'}; // redux
+                  cartCounter: "3"};
     
-    // this.state = {toggleCart: false};
     this.dropDownMenu = this.dropDownMenu.bind(this);
-    
-    // this.changeCurrency = this.changeCurrency.bind(this);
   }
   
 
 
-  componentDidMount(){
-    console.log('Navigation mount',this.props);
-    console.log('Navigation state',this.state);
-  }
-    componentDidUpdate(){
-      console.log('Navigation mount',this.props);
-      console.log('Navigation state',this.state);
-    }
-  changeCurrency(currency){
-    this.setState({currentCurency: currency})
-  }
+  // componentDidMount(){
+  //   console.log('Navigation mount props',this.props);
+  //   console.log('Navigation mount state',this.state);
+  // }
+  // componentDidUpdate(){
+  //   console.log('Navigation update props',this.props);
+  //   console.log('Navigation update state',this.state);
+  // }
 
   dropDownMenu(e){
     this.setState({toggleDropdown: !this.state.toggleDropdown});
@@ -74,8 +66,8 @@ export class Navigation extends Component {
           <menu className='nav__menu--cart' >
             <ul>
               <li onClick={this.dropDownMenu} >
-                <span>{this.props.currentCurency}</span>
-                {this.state.toggleDropdown ? <DropDownCur changeCurrency={this.props.changeCurrency}/> : null}
+                <span>{this.props.currentCurrency}</span>
+                {this.state.toggleDropdown ? <DropDownCur /> : null}
                 </li>
               <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
               <li >
@@ -90,4 +82,5 @@ export class Navigation extends Component {
   }
 }
            //redux HOC State  Dispatch  Component
-export default connect(state => ({currencyProp: getCurrentCurrency(state)}) )(Navigation)
+export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)
+//changeCurrency={this.props.changeCurrency} dr

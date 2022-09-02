@@ -3,6 +3,10 @@ import '../styles/ProductCard.scss'
 import {ReactComponent as ToCartBtn} from '../assets/toCartBtnIcon.svg'
 import {currencyNumber} from '../utils/currencyNumber'
 
+import { connect } from 'react-redux'
+import { getCurrentCurrency } from '../redux/selectors'
+import { Link } from 'react-router-dom'
+
 export class ProductCard extends Component {
   constructor(props){
     super(props);
@@ -12,7 +16,7 @@ export class ProductCard extends Component {
   }
 
   // componentDidMount(){
-  //   // console.log('Product Card mount', this.props);
+  //   console.log('Product Card mount', this.props);
   // }
   
   // componentDidUpdate(){
@@ -30,15 +34,16 @@ export class ProductCard extends Component {
     return (
       <div className={'productCard'} onMouseEnter={this.toggleShowBtn }
       onMouseLeave={this.toggleShowBtn }>
-        <img className='productCard__image' src={this.props.product.gallery[0]}  alt={this.props.product.name}/>
+        <Link to={`/${this.props.product.category}/${this.props.product.id}`}><img className='productCard__image' src={this.props.product.gallery[0]}  alt={this.props.product.name}/></Link>
         <div className='productCard__Btn'>{ this.state.showBtn ? <div className='productCard__Btn--pushToCart'><ToCartBtn /></div> : null}</div>
         <p className='productCard__name'>{this.props.product.name}</p>
-        <p className='productCard__price'>{ this.props.product.prices[currencyNumber(this.props.currentCurency)].currency.symbol }{this.props.product.prices[currencyNumber(this.props.currentCurency)].amount}</p>
+        <p className='productCard__price'>{ this.props.product.prices[currencyNumber(this.props.currentCurrency)].currency.symbol }{this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount}</p>
       </div>
     )
   }
 }
 
-export default ProductCard
+export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(ProductCard)
 
 //{()=> this.props.changeCurrency(curr.symbol)}
+//connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)

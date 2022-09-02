@@ -26,15 +26,12 @@ export class DropDownCur extends Component {
   //   console.log('Dropdown mount',this.props);
     
   // }
-  componentWillUnmount(){
-    console.log('Dropdown unmount props',this.props);
+  // componentWillUnmount(){
+  //   console.log('Dropdown unmount props',this.props);
     
-  }
+  // }
 
   // to redux
-  // currSignToStore = (payload) => {
-  //   this.props.addTodo(payload)
-  // }
   currSignToStore = (payload) => {
     this.props.toggleCurrency(payload)
   }
@@ -46,7 +43,7 @@ export class DropDownCur extends Component {
           {({loading, data})=>{
             if (loading) return "Loading...";
             const { currencies } = data;
-            return (<>{currencies.map((curr,index) => <div key={index} onClick={()=> {this.props.changeCurrency(curr.symbol) ; this.currSignToStore(curr.symbol)  }} className="dropDownCur-row"><span className='dropDownCur-row__cell'>{curr.symbol+ ' '+curr.label}</span></div>)}</>)
+            return (<>{currencies.map((curr,index) => <div key={index} onClick={()=> {  this.currSignToStore(curr.symbol)  }} className="dropDownCur-row"><span className='dropDownCur-row__cell'>{curr.symbol+ ' '+curr.label}</span></div>)}</>)
           }}
         </Query>
       </div>
@@ -55,4 +52,3 @@ export class DropDownCur extends Component {
 }
 
 export default connect(null, {addTodo, toggleCurrency})(DropDownCur)
-

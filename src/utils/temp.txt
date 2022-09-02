@@ -24,3 +24,34 @@ from index.js
             return categories.map((cat,index) => <h1 key={index}>{cat.name}</h1>)
           }}
         </Query> */}
+
+
+// hoc to router
+
+
+import React, { Component } from 'react'
+import {gql} from '@apollo/client'
+import {Query} from '@apollo/client/react/components'
+
+import '../styles/ProductDescription.scss'
+import { withParams } from '../utils/hocs'
+
+
+export class ProductDescription extends Component {
+
+  componentDidMount(){
+  console.log('PDP mount props',this.props);
+  // console.log('PDP mount state',this.state);
+}
+
+  render() {
+
+    let { category , productId} = this.props.params;
+
+    return (
+      <div>ProductDescription ---  {category} ,   { productId } </div>
+    )
+  }
+}
+
+export default withParams(ProductDescription)
