@@ -1,9 +1,9 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom';
-import '../styles/App.scss';
-import Category from './Category';
-import Navigation from './Navigation';
-import ProductDescription from './ProductDescription';
+import './styles/App.scss';
+import Category from './pages/Category';
+import Navigation from './components/Navigation';
+import ProductDescription from './pages/ProductDescription';
 
 class App extends React.Component {
   constructor(props){

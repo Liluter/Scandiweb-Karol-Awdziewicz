@@ -8,6 +8,10 @@ import '../styles/ProductDescription.scss'
 import { withParams } from '../utils/hocs'
 
 
+import ThumbsBlock from '../components/ThumbsBlock'
+import PhotoBlock from '../components/PhotoBlock'
+import VariantBlock from '../components/VariantBlock'
+
 const GET_PRODUCT = gql`
 query GetProduct($productId: String!) {
   product(id: $productId) {
@@ -63,28 +67,11 @@ export class ProductDescription extends Component {
             if (loading) return "Loading...";
             const { product} = data;
             return (<>
-            <aside className='productDesc__thumbs'>
-              <img className='productDesc__thumbs--thumb-item' src='/logo192.png' alt='product_name'/>
-              <img className='productDesc__thumbs--thumb-item' src='/logo192.png' alt='product_name'/>
-              <img className='productDesc__thumbs--thumb-item' src='/logo192.png' alt='product_name'/>
-            </aside>
+            <ThumbsBlock/>
             
-            <main><img className='productDesc__main--photo' src='/logo512.png' alt='product_name'/></main>
-            <aside className='productDesc__block'>
-              <h1 className='productDesc__block--header'>{product.brand}</h1>
-              <h2 className='productDesc__block--name'>{product.name}</h2>
-              {/* new element */}
-              <div className='productDesc__block--variantSize'>
-                <div className='variantSize__label'>SIZE:</div>
-                <div className='variantSize__options'>
-                  <button className='variantSize__options--Btn'>XS</button>
-                  <button className='variantSize__options--Btn'>S</button>
-                  <button className='variantSize__options--Btn'>M</button>
-                  <button className='variantSize__options--Btn'>L</button>
-                </div>
-              </div>
-              
-            </aside>
+            <PhotoBlock/>
+            
+            <VariantBlock/>
 
             </>)
           }}

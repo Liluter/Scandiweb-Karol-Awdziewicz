@@ -1,0 +1,13 @@
+.productDesc__thumbs{
+  width: 79px;
+  margin: 49px 14px 0 0;
+  
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  &--thumb-item{
+    width: 79px;
+    height: 80px;
+    background-color: orange;
+  }
+}

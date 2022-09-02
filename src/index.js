@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 
 import './styles/index.scss';
-import App from './components/App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({
