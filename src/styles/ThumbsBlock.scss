@@ -1,13 +1,28 @@
 .productDesc__thumbs{
-  width: 79px;
-  margin: 49px 14px 0 0;
+  position: relative;
+  overflow-y: hidden;
+  scrollbar-width: thin;
   
+  width: 99px;
+  height: 511px;
+  margin: 49px 20px 0 0;
   display: flex;
-  gap: 40px;
   flex-direction: column;
+  gap: 40px;
+  padding-right: 0; 
+  flex-shrink: 0;
+  &:hover{
+    overflow-y: scroll;
+    // box-shadow: 0 0 20px #d9d9d9;
+  }
+  // &:hover::-webkit-scrollbar{
+  //   display: none;
+  // }
   &--thumb-item{
     width: 79px;
     height: 80px;
-    background-color: orange;
+    background-color: transparent;
+    flex-shrink: 0;;
+    object-fit: contain;
   }
 }

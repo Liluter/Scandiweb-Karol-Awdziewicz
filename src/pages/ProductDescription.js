@@ -7,7 +7,7 @@ import '../styles/ProductDescription.scss'
 import '../styles/ProductDescription.scss'
 import { withParams } from '../utils/hocs'
 
-
+import ProductDescWrapper from '../components/ProductDescWrapper'
 import ThumbsBlock from '../components/ThumbsBlock'
 import PhotoBlock from '../components/PhotoBlock'
 import VariantBlock from '../components/VariantBlock'
@@ -47,36 +47,31 @@ query GetProduct($productId: String!) {
 
 
 export class ProductDescription extends Component {
+  
+
+  // componentDidMount(){
+  //   console.log('PDP mount props',this.props);
+  //   // console.log('PDP mount state',this.state);
+  // }
 
 
-  
-  componentDidMount(){
-    console.log('PDP mount props',this.props);
-    // console.log('PDP mount state',this.state);
-  }
-  
   render() {
 
     let { category , productId} = this.props.params;
     
     return (
-        <div className='productDesc'> 
-  
-        <Query query={GET_PRODUCT} variables={{"productId": productId}} >
-          {({loading, data})=>{
-            if (loading) return "Loading...";
-            const { product} = data;
-            return (<>
-            <ThumbsBlock/>
-            
-            <PhotoBlock/>
-            
-            <VariantBlock/>
-
-            </>)
-          }}
-      </Query>
-      </div>
+        <div className='productDesc'>
+          <Query  
+          query={GET_PRODUCT} variables={{"productId": productId}} >
+            {({loading, data})=>{
+              if (loading) return "Loading...";
+              const { product} = data;
+              return (
+              <ProductDescWrapper product={product}/>
+              )
+            }}
+        </Query>
+        </div>
     )
   }
 }
