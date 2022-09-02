@@ -11,8 +11,8 @@ export class ProductDescWrapper extends Component {
     this.selectPhoto = this.selectPhoto.bind(this)
   }
 
-selectPhoto(foto){
-this.setState( {mainPhoto : foto});
+selectPhoto(photo){
+this.setState( {mainPhoto : photo});
 }
 
 componentDidMount(){
@@ -27,7 +27,7 @@ componentDidMount(){
               
         <PhotoBlock photo={ this.state.mainPhoto }/>
               
-        <VariantBlock/>
+        <VariantBlock product={this.props.product}/>
       </>
     )
   }

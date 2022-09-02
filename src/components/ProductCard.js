@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/ProductCard.scss'
-import {ReactComponent as ToCartBtn} from '../assets/toCartBtnIcon.svg'
+import {ReactComponent as ToCartBtn} from '../assets/cartIcon2.svg'
 import {currencyNumber} from '../utils/currencyNumber'
 
 import { connect } from 'react-redux'
@@ -28,16 +28,16 @@ export class ProductCard extends Component {
     this.setState( {showBtn: !this.state.showBtn} )
   }
 
-
-
+  
   render() {
+    let price =   this.props.product.prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
     return (
       <div className={'productCard'} onMouseEnter={this.toggleShowBtn }
       onMouseLeave={this.toggleShowBtn }>
         <Link to={`/${this.props.product.category}/${this.props.product.id}`}><img className='productCard__image' src={this.props.product.gallery[0]}  alt={this.props.product.name}/></Link>
-        <div className='productCard__Btn'>{ this.state.showBtn ? <div className='productCard__Btn--pushToCart'><ToCartBtn /></div> : null}</div>
+        <div className='productCard__Btn'>{ this.state.showBtn ? ( this.props.product.inStock ? <div className='productCard__Btn--pushToCart'><ToCartBtn /></div> : null) : null}</div>
         <p className='productCard__name'>{this.props.product.name}</p>
-        <p className='productCard__price'>{ this.props.product.prices[currencyNumber(this.props.currentCurrency)].currency.symbol }{this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount}</p>
+        <p className='productCard__price'>{ price }</p>
       </div>
     )
   }
@@ -47,3 +47,4 @@ export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )
 
 //{()=> this.props.changeCurrency(curr.symbol)}
 //connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)
+// <ToCartBtn />

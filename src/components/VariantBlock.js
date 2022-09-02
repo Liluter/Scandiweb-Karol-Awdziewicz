@@ -2,14 +2,29 @@ import React, { Component } from 'react'
 
 import '../styles/VariantBlock.scss'
 
+import { connect } from 'react-redux';  
+import { getCurrentCurrency } from '../redux/selectors'
+import { currencyNumber } from '../utils/currencyNumber';
+import Description from './Description';
+
 export class VariantBlock extends Component {
+  constructor(props){
+    super(props)
+    this.state = {}
+  }
+
+  // Attributes filter function to do
+
   render() {
+    let { brand, name ,inStock , prices, description, attributes} = this.props.product
+    let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
+    console.log(attributes[0])
     return (
       <aside className='productDesc__block'>
-              <h1 className='productDesc__block--header'></h1>
-              <h2 className='productDesc__block--name'></h2>
+              <h1 className='productDesc__block--header'>{brand}</h1>
+              <h2 className='productDesc__block--name'>{name}</h2>
 
-              {/* new element */}
+              
               <div className='productDesc__block--variantSize'>
                 <div className='variantSize__label'>SIZE:</div>
                 <div className='variantSize__options'>
@@ -32,18 +47,16 @@ export class VariantBlock extends Component {
               <div className='productDesc__block--price'>
                 <div className='price__label'>PRICE:</div>
                 <div className='price__amount'>
-                  $50.00
+                  {price}
                 </div>
               </div>
 
-              <button className='productDesc__block--button'>
-                ADD TO CART
+              <button className={`productDesc__block--button ${inStock ? '' : 'notInStock'}`} >
+                {inStock ? 'ADD TO CART' : 'NOT IN STOCK' }
               </button>
 
-              <footer className='productDesc__block--footer'>
-                <p>
-                Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.
-                </p>
+              <footer className='productDesc__block--footer' >
+                <Description description={description}/>
               </footer>
               
             </aside>
@@ -51,4 +64,8 @@ export class VariantBlock extends Component {
   }
 }
 
-export default VariantBlock
+export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(VariantBlock)
+//export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)
+// { this.props.product.prices[currencyNumber(this.props.currentCurrency)].currency.symbol }{this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount}
+
+// Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.
