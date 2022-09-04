@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER} from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART} from "./actionTypes";
 
 let nextTodoId = 0
 export const addTodo = (content) => ({
@@ -19,6 +19,13 @@ export const toggleCurrency = currency => ({
   type: TOGGLE_CURRENCY,
   payload: {currency}
 });
+
+export const addToCart = (content) => ({
+  type: ADD_TO_CART,
+  payload: {
+    content,
+  }
+})
 
 
 export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });

@@ -4,7 +4,7 @@ import {Query} from '@apollo/client/react/components'
 import '../styles/DropDownCur.scss';
 
 import { connect } from 'react-redux';  
-import { addTodo, toggleCurrency } from '../redux/action' // action dispaych
+import { toggleCurrency } from '../redux/action' // action dispaych
 
 const CURRENCIES = gql`
 query getCurrenciesList{
@@ -51,4 +51,4 @@ export class DropDownCur extends Component {
   }
 }
 
-export default connect(null, {addTodo, toggleCurrency})(DropDownCur)
+export default connect(null, { toggleCurrency})(DropDownCur)

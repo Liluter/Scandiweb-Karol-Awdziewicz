@@ -34,10 +34,11 @@ export class ProductCard extends Component {
     return (
       <div className={'productCard'} onMouseEnter={this.toggleShowBtn }
       onMouseLeave={this.toggleShowBtn }>
-        <Link to={`/${this.props.product.category}/${this.props.product.id}`}><img className='productCard__image' src={this.props.product.gallery[0]}  alt={this.props.product.name}/></Link>
+        <Link to={`/${this.props.product.category}/${this.props.product.id}`}><img className={`productCard__image ${this.props.product.inStock ? null : 'outOfStock'}`} src={this.props.product.gallery[0]}  alt={this.props.product.name}/></Link>
+        <div className='productCard__stockStatus'>{this.props.product.inStock ? null : <div className='productCard__stockStatus--showStatus'>OUT OF STOCK</div>}</div>
         <div className='productCard__Btn'>{ this.state.showBtn ? ( this.props.product.inStock ? <div className='productCard__Btn--pushToCart'><ToCartBtn /></div> : null) : null}</div>
-        <p className='productCard__name'>{this.props.product.name}</p>
-        <p className='productCard__price'>{ price }</p>
+        <p className={`productCard__name ${this.props.product.inStock ? null : 'outOfStock'}`}>{this.props.product.name}</p>
+        <p className={`productCard__price ${this.props.product.inStock ? null : 'outOfStock'}`}>{ price }</p>
       </div>
     )
   }

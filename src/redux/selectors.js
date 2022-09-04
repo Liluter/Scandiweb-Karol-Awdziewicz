@@ -28,4 +28,6 @@ export const getTodos = store =>
 //   }
 // };
 
-export const getCurrentCurrency = store => store.shop.currentCurrency;  
+export const getCurrentCurrency = store => store.shop.currentCurrency;
+export const getCartItemNumber = store => store.shop.cart.length;
+export const getCart = store => store.shop.cart;

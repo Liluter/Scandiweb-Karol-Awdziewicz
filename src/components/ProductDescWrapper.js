@@ -11,7 +11,7 @@ export class ProductDescWrapper extends Component {
     this.selectPhoto = this.selectPhoto.bind(this)
   }
 
-selectPhoto(photo){
+selectPhoto = (photo) =>{
 this.setState( {mainPhoto : photo});
 }
 

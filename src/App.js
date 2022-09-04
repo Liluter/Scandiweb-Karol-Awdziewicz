@@ -4,7 +4,7 @@ import './styles/App.scss';
 import Category from './pages/Category';
 import Navigation from './components/Navigation';
 import ProductDescription from './pages/ProductDescription';
-
+import Cart from './pages/Cart';
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -33,6 +33,7 @@ class App extends React.Component {
           <Route path="/clothes" element={<Category category={this.state.category} />}/>
           <Route path="/tech" element={<Category category={this.state.category} />}/>
           <Route path="/:category/:productId" element={<ProductDescription/>}/>
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
               <h3>There's nothing here!</h3>

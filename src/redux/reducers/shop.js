@@ -1,10 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO } from "../actionTypes";
+import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO ,ADD_TO_CART} from "../actionTypes";
 
 const initialState = {
   // allIds: [],
   // byIds: {},
   currentCurrency: '$',
+  cart: [],
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +24,13 @@ export default function (state = initialState, action) {
     //     }
     //   };
     // }
+      case ADD_TO_CART: {
+        const { content } = action.payload;
+        return {
+          ...state,
+          cart : [...state.cart, content ],
+        }
+      }
     // case TOGGLE_TODO: {
     //   const { id } = action.payload;
     //   return {

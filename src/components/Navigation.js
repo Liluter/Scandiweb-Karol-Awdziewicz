@@ -6,6 +6,7 @@ import {ReactComponent as BrandLogo} from '../assets/brandLogo.svg'
 import {ReactComponent as CartIcon} from '../assets/CartIcon.svg'
 import {ReactComponent as Caret} from '../assets/caretUp.svg'
 import DropDownCur from './DropDownCur';
+import MiniCart from './MiniCart'
 import '../styles/Navigation.scss'
 
 import { connect } from 'react-redux';  
@@ -25,9 +26,11 @@ export class Navigation extends Component {
   constructor(props){
     super(props);
     this.state = {toggleDropdown: false,
+                  toggleMiniCart: false,
                   cartCounter: "3"};
     
     this.dropDownMenu = this.dropDownMenu.bind(this);
+    this.miniCartMenu = this.miniCartMenu.bind(this)
   }
   
 
@@ -43,6 +46,10 @@ export class Navigation extends Component {
 
   dropDownMenu(e){
     this.setState({toggleDropdown: !this.state.toggleDropdown});
+  }
+
+  miniCartMenu(){
+    this.setState({toggleMiniCart: !this.state.toggleMiniCart});
   }
 
   render() {
@@ -70,9 +77,10 @@ export class Navigation extends Component {
                 {this.state.toggleDropdown ? <DropDownCur /> : null}
                 </li>
               <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
-              <li >
+              <li onClick={this.miniCartMenu}>
                 <CartIcon/>
                 {this.state.cartCounter > 0 ? <div className='cartCounter'>{this.state.cartCounter}</div> : null}
+                {this.state.toggleMiniCart ? <MiniCart/> : null}
               </li>
             </ul>
           </menu>
