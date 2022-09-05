@@ -3,7 +3,7 @@ import TypeText from './TypeText'
 import TypeSwatch from './TypeSwatch'
 
 
-export class VariantTypes extends Component {
+export class VariantTypesMiniCart extends Component {
   constructor(params) {
     super(params)
     this.selectType = this.selectType.bind(this)
@@ -31,6 +31,4 @@ export class VariantTypes extends Component {
   }
 }
 
-export default VariantTypes
-
-//attributes.filter((e) => e.name === "Size" ).length > 0 ? 'Has Size attribute'  : "Hasn't Size attribute")
+export default VariantTypesMiniCart

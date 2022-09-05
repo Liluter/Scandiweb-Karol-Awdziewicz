@@ -14,15 +14,6 @@ export class ProductCard extends Component {
     this.toggleShowBtn = this.toggleShowBtn.bind(this);
     
   }
-
-  // componentDidMount(){
-  //   console.log('Product Card mount', this.props);
-  // }
-  
-  // componentDidUpdate(){
-  //   console.log(currencyNumber(this.props.currentCurency));
-  //   // console.log("Currency symbol func'", (this.currencySymbol() ))
-  // }
   
   toggleShowBtn() {
     this.setState( {showBtn: !this.state.showBtn} )

@@ -19,7 +19,7 @@ class Category extends React.Component {
 
   render() {
     return (
-    <main className='category'>
+    <main className='category background'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
       <ProductCards 
       category={this.props.category} 

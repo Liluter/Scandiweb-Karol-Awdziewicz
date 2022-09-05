@@ -13,13 +13,18 @@ import VariantTypes from './VariantTypes';
 export class VariantBlock extends Component {
   constructor(props){
     super(props)
-    this.state = {temporarySet:{id: this.props.product.id }}
+    this.state = {temporarySet:{id: this.props.product.id ,
+                                name: this.props.product.name,
+                                brand: this.props.product.brand,
+                                prices: this.props.product.prices,
+                                gallery: this.props.product.gallery,
+                                count: 1,}}
     this.toCart = this.toCart.bind(this)
   }
 
   
   toggleAttribute = (arg) =>{
-    this.setState({temporarySet:{...this.state.temporarySet, ...this.state.temporarySet.attributes , ...arg }  })
+    this.setState((state,props)=> ({temporarySet:{...state.temporarySet, ...state.temporarySet.attributes , ...arg }  }))
   }
   // to redux
   toCart = (payload) => {
@@ -30,6 +35,7 @@ export class VariantBlock extends Component {
     // console.log('VariantBloc state',this.state)
     let { brand, name ,inStock , prices, description, attributes} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
+    
     return (
       <aside className='productDesc__block'>
         <h1 className='productDesc__block--header'>{brand}</h1>

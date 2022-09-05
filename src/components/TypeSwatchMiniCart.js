@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../styles/TypeSwatch.scss'
 
 
-export class TypeSwatch extends Component {
+export class TypeSwatchMiniCart extends Component {
   constructor(props){
     super(props)
     this.state={ ...this.selectName(this.props.attributes.items[0].value)}
@@ -51,4 +51,4 @@ export class TypeSwatch extends Component {
   }
 }
 
-export default TypeSwatch
+export default TypeSwatchMiniCart

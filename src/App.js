@@ -9,24 +9,39 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={category: 'all',
-                currentCurency: "$"}; // to remove redux will take care
+                currentCurency: "$",
+                toggleFog: false,
+                miniCart: false}; // to remove redux will take care
 
     this.categorySelect = this.categorySelect.bind(this)
+    this.toggleFog = this.toggleFog.bind(this)
+    this.toggleMiniCart = this.toggleMiniCart.bind(this)
     // this.changeCurrency = this.changeCurrency.bind(this);
   }
 
   // changeCurrency(sign){
   //   this.setState({currentCurency: sign})
   // }
+  toggleFog(){
+    this.setState(()=>({toggleFog: !this.state.toggleFog}))
+    
+  }
+
+  toggleMiniCart(){
+    this.setState(()=>({miniCart: !this.state.miniCart}))
+    this.toggleFog()
+  }
+
 
   categorySelect(cat){
     this.setState({category: cat})
   }
 
   render() {
+    // console.log(this.state)
     return (
       <main className='container'>
-        <Navigation categorySelect={this.categorySelect}  ></Navigation>
+        <Navigation categorySelect={this.categorySelect} toggleFog={this.toggleFog} toggleMiniCart={this.toggleMiniCart} miniCart={this.state.miniCart} ></Navigation>
         <Routes>
           <Route path="/" element={<Category category={'all'} />}/>
           <Route path="/all" element={<Category category={this.state.category} />}/>
@@ -40,6 +55,7 @@ class App extends React.Component {
             </main> 
           }/>
         </Routes>
+          { this.state.toggleFog ? <div onClick={this.toggleMiniCart} className='container__fog'></div> : null}
       </main>
     );
   }

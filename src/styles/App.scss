@@ -1,7 +1,15 @@
 .container {
   width:100vw;
-  
-  height: auto
+  position: relative;
+  height: min-content;
+  min-height: 100vh;
+  &__fog{
+    position:absolute;
+    width:100vw;
+    bottom: 0;
+    top: 80px;
+    background: rgba(57, 55, 72, 0.22);
+  }
 }
 
 

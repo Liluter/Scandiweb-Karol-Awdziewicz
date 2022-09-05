@@ -6,13 +6,13 @@
   position: absolute;
   z-index:2;
   width: 325px;
-  height: 677px;
+  max-height: 677px;
   top: 78px;
   right: -39px;
   padding: 32px 16px;
   gap: 32px;
-  background: #dddddd;
-
+  background: #ffffff;
+  cursor: default;
   &__header{
       background-color: #ffffff;
       font-family: 'Raleway';
@@ -27,24 +27,65 @@
         font-weight: 700;
       }
     }
-  // filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
-    &-row {
+    &__total{
+      width: 293px;
       display: flex;
-      align-items: center;
-      padding-left: 20px;
-      height: 45px;
-      background-color: #ffffff;
-      color: #1D1F22;
-    
-      &__cell{
-        height:29px;
+      justify-content: space-between;
+      height:28px;
+      &--text{
+        display: flex;
+        height: 26px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        align-items: flex-end;
+        
+      }
+      &--amount{
+        display: flex;
+        height: 26px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 160%;
+        align-items: flex-start;
       }
     }
-    &-row:hover{
-      height: 45px;
-      background-color: #EEEEEE;
+    &__footer{
+      width: 293px;
+      display: flex;
+      justify-content: space-between ;
+      &--buttonBag{
+        width: 140px;
+        height: 43px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+        background-color: #FFFFFF;
+        border: solid 1px #1D1F22;
+        cursor: pointer;
+      }
+      &--buttonCheckout{
+        width: 140px;
+        height: 43px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 120%;
+        background-color: #5ECE7B;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+      }
     }
-  
+  // filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+
   }
   
   @media screen and ( max-width: 600px) {

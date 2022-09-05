@@ -8,9 +8,7 @@ import '../styles/ProductDescription.scss'
 import { withParams } from '../utils/hocs'
 
 import ProductDescWrapper from '../components/ProductDescWrapper'
-import ThumbsBlock from '../components/ThumbsBlock'
-import PhotoBlock from '../components/PhotoBlock'
-import VariantBlock from '../components/VariantBlock'
+
 
 const GET_PRODUCT = gql`
 query GetProduct($productId: String!) {

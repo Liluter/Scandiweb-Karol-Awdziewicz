@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/TypeText.scss'
 
-
-export class Typetext extends Component {
+export class TypeTextMiniCart extends Component {
   constructor(props){
     super(props)
     //selected: '' || this.props.attributes.items[0].displayValue
@@ -57,4 +56,4 @@ export class Typetext extends Component {
   }
 }
 
-export default Typetext
+export default TypeTextMiniCart
