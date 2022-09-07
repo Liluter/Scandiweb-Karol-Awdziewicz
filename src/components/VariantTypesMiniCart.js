@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import TypeText from './TypeText'
-import TypeSwatch from './TypeSwatch'
+// import TypeText from './TypeText'
+// import TypeSwatch from './TypeSwatch'
 import TypeTextMiniCart from './TypeTextMiniCart'
 import TypeSwatchMiniCart from './TypeSwatchMiniCart'
 

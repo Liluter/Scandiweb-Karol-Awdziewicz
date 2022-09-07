@@ -1,6 +1,7 @@
-import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, ADD_TO_CART_ITEM} from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
 import { nanoid } from '@reduxjs/toolkit'
 let nextTodoId = 0
+let nextCartItem = 0
 // let nextCartId = 0
 export const addTodo = (content) => ({
   type: ADD_TODO,
@@ -21,19 +22,28 @@ export const toggleCurrency = currency => ({
   payload: {currency}
 });
 
-export const addToCart = (content) => ({
+export const addToCart = (product) => ({
   type: ADD_TO_CART,
   payload: {
-    idKey: nanoid(),
-    content,
+    id: ++nextCartItem,
+    // idKey: nanoid(),
+    product,
   }
 })
-export const addToCartItem = count => ({
-  type: ADD_TO_CART_ITEM,
-  payload: {
-    count,
-  }
+//good
+// export const addToCartItem = (count) => ({
+//   type: ADD_TO_CART_ITEM,
+//   payload: {
+//     count
+//   }
+// })
+
+//test
+export const addToCartItem = (id, amount) => ({
+  type: CHANGE_CART_ITEM_PCS,
+  payload: { id , amount}
 })
+
 
 
 export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });

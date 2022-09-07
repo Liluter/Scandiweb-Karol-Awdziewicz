@@ -46,7 +46,7 @@ export class Typetext extends  Component {
   // }
 
   handleClick(item, name){
-    console.log('handle load',item)
+    // console.log('handle load',item)
   
     this.selectAttribute(this.selectName(item));
     this.setState(()=>({number: item} ))

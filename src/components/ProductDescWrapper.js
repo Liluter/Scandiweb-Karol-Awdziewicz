@@ -20,7 +20,7 @@ componentDidMount(){
 }
 
   render() {
-    // console.log('ProdDescWrapp: ', this.props )
+    console.log('ProdDescWrapp: ', this.props )
     return (
       <>
         <ThumbsBlock photos={this.props.product.gallery}
@@ -28,9 +28,7 @@ componentDidMount(){
               
         <PhotoBlock photo={ this.state.mainPhoto }/>
               
-        <VariantBlock 
-        // key={this.productId } 
-        product={this.props.product}/>
+        <VariantBlock product={this.props.product}/>
       </>
     )
   }

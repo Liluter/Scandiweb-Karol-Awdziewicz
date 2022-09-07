@@ -27,7 +27,8 @@ export class Navigation extends Component {
     super(props);
     this.state = {toggleDropdown: false,
                   // toggleMiniCart: false,
-                  cartCounter: props.cart.length};
+                  // cartCounter: (props.cart).length}
+                                                      };
     
     this.dropDownMenu = this.dropDownMenu.bind(this);
     this.miniCartMenu = this.miniCartMenu.bind(this);
@@ -36,11 +37,12 @@ export class Navigation extends Component {
   
 
   componentDidMount(){
-  this.setState(()=>({cartCounter: this.props.cart.length}))
+  // this.setState(()=>({cartCounter: this.props.cart).length})) //????
   
   }
 
   dropDownMenu(e){
+    // console.log('object properties  ', Object.keys(this.props.ItemsByIds).length )
     this.setState({toggleDropdown: !this.state.toggleDropdown});
     this.timer = setTimeout( () => this.setState({toggleDropdown: false}),5000)
   }
@@ -55,7 +57,7 @@ export class Navigation extends Component {
   }
 
   render() {
-    // console.log('nav cout cart props state ',this.props , this.state)
+    // console.log('nav cout cart props state ',this.props  )
     // this.props.miniCart ? console.log('TRUE' ) : console.log('FALSE')
     return (
       <nav className="nav">
@@ -83,7 +85,8 @@ export class Navigation extends Component {
               <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
               <li >
                 <CartIcon onClick={this.miniCartMenu}/>
-                {this.props.cart.length > 0 ? <div className='cartCounter'>{this.props.cart.length}</div> : null}
+                {Object.keys(this.props.ItemsByIds).length > 0 ? <div className='cartCounter'>{Object.keys(this.props.ItemsByIds).length}</div> : null}
+                {/* {this.props.cart.length > 0 ? <div className='cartCounter'>{this.props.length}</div> : null} */}
                 {  this.props.miniCart ? <MiniCart toggleFog={this.props.toggleFog}/> : null}
               </li>
             </ul>
@@ -94,5 +97,5 @@ export class Navigation extends Component {
   }
 }
            //redux HOC State  Dispatch  Component
-export default connect(state => ({currentCurrency: getCurrentCurrency(state) , cart:getCart(state)}) )(Navigation)
+export default connect(state => ({currentCurrency: getCurrentCurrency(state) , ItemsByIds:getCart(state)}) )(Navigation)
 //changeCurrency={this.props.changeCurrency} dr

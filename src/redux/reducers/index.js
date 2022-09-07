@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import visibilityFilter from "./visibilityFilter";
+// import visibilityFilter from "./visibilityFilter";
 import shop from "./shop";
 
-export default combineReducers({ shop, visibilityFilter });
+export default combineReducers({ shop });
+// visibilityFilter 

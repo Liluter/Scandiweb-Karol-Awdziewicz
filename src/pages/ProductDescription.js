@@ -4,7 +4,7 @@ import {Query} from '@apollo/client/react/components'
 
 import '../styles/ProductDescription.scss'
 
-import '../styles/ProductDescription.scss'
+// import '../styles/ProductDescription.scss'
 import { withParams } from '../utils/hocs'
 
 import ProductDescWrapper from '../components/ProductDescWrapper'
@@ -45,21 +45,10 @@ query GetProduct($productId: String!) {
 
 
 export class ProductDescription extends Component {
-  constructor(props) {
-    super(props)
-    this.state={productId : this.props.params}
-  }
-
-  componentDidMount(){
-    // console.log('PDP mount props',this.props);
-    // console.log('PDP mount state',this.state);
-  }
   
-  
-
   render() {
 
-    let { category , productId} = this.props.params;
+    let {  productId} = this.props.params;
     // console.log('ProductDescription props', this.props)
     // console.log('ProductDescription state', this.state)
     return (

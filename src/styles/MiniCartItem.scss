@@ -20,7 +20,6 @@
       line-height: 160%;
     }
     &--name{
-      // height:26px;
       font-weight: 300;
       font-size: 16px;
       line-height: 160%;
@@ -31,7 +30,6 @@
       font-weight: 600;
       font-size: 16px;
       line-height: 160%;
-      margin-bottom: 8px;
     }
     
   }
@@ -66,9 +64,9 @@
     width: 121px;
     height: 190px;
     &--image{
-      transition: all 1500ms ease;
+      transition: all 200ms ease;
       width:121px;
-      height: 190px;
+      height: 182px;
       object-fit: contain;
       object-position: 50% 50%;
     }

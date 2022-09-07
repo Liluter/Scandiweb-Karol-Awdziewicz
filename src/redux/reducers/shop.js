@@ -1,12 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO ,ADD_TO_CART, ADD_TO_CART_ITEM} from "../actionTypes";
+import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO ,ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "../actionTypes";
 
 const initialState = {
   // allIds: [],
-  // byIds: {},
+  ItemsByIds: {},
   currentCurrency: '$',
-  cart: [],
-  counter: 0,
+  // cart: [],
 };
 
 export default function (state = initialState, action) {
@@ -25,21 +24,70 @@ export default function (state = initialState, action) {
     //     }
     //   };
     // }
+      //test good ok
       case ADD_TO_CART: {
-        const {  idKey, content } = action.payload;
+        const {  id, idKey, product } = action.payload;
         return {
           ...state,
-          cart : [...state.cart, {...content, idKey}],
+          ItemsByIds: {
+            ...state.ItemsByIds,
+            [id]: {
+              product,
+              count: 1
+            }
+          }
         }
       }
+      //good old
+      // case ADD_TO_CART: {
+      //   const {  idKey, content } = action.payload;
+      //   return {
+      //     ...state,
+      //     cart : [...state.cart, {...content, idKey}],
+      //   }
+      // }
 
-      case ADD_TO_CART_ITEM: {
-        const  {count } = action.payload;
+      // good
+      case CHANGE_CART_ITEM_PCS: {
+        const { id , amount} = action.payload;
         return {
           ...state,
-          counter: count
-        }
+          ItemsByIds: {
+            ...state.ItemsByIds,
+            [id]: {
+              ...state.ItemsByIds[id],
+              count: ( (amount === true) ? (state.ItemsByIds[id].count + 1) : (state.ItemsByIds[id].count - 1))
+            }
+          }
+        };
       }
+      
+      // // good
+      // case CHANGE_CART_ITEM_PCS: {
+      //   const { id } = action.payload;
+      //   return {
+      //     ...state,
+      //     ItemsByIds: {
+      //       ...state.ItemsByIds,
+      //       [id]: {
+      //         ...state.ItemsByIds[id],
+      //         count: state.ItemsByIds[id].count + 1
+      //       }
+      //     }
+      //   };
+      // }
+      
+
+
+      // //good
+      // case ADD_TO_CART_ITEM: {
+      //   const  {count } = action.payload;
+      //   return {
+      //     ...state,
+      //     counter: count
+      //   }
+      // }
+
     // case TOGGLE_TODO: {
     //   const { id } = action.payload;
     //   return {

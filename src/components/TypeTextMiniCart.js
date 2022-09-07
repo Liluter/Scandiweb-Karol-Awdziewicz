@@ -13,7 +13,7 @@ export class TypeTextMiniCart extends  Component {
     this.selectName= this.selectName.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
-    
+    this.shortName = this.shortName.bind(this)
     // this.selectSize = this.selectSize.bind(this)
       //this.selectName(this.props.attributes.items[0].displayValue)
     }
@@ -46,8 +46,14 @@ export class TypeTextMiniCart extends  Component {
     this.props.toggleAttribute( this.state.selected )
   }
 
+  shortName(input){
+    return (input.length <= 2) ? input : input.slice(0,1)
+  }
+
+  
+
   handleClick(item, name){
-    this.selectAttribute(this.selectName(item));
+    this.selectAttribute(this.selectName(item))
     this.setState(()=>({number: item} ))
     this.props.toggleAttribute( item )
   
@@ -75,7 +81,7 @@ export class TypeTextMiniCart extends  Component {
           (<button key={index}
             title={items[index].displayValue}
             onClick={() => {this.handleClick(index, name) }}
-            className={`variant__options--Btn ${this.state.number === index ? 'selected' : ''}`}>{`${items[index].displayValue[0]}`}
+            className={`variant__options--Btn ${this.state.number === index ? 'selected' : ''}`}>{this.shortName(items[index].displayValue)}
           </button>) )}
   
         </div>
