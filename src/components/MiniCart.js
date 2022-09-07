@@ -6,13 +6,18 @@ import MiniCartItems from './MiniCartItems'
 
 
 export class MiniCart extends Component {
+  constructor(props){
+    super(props)
+    this.state={}
+  }
   render() {
     let cartItemNumber = this.props.cartItemNumber;
     console.log('minicart props',this.props)
+    console.log('minicart state',this.state)
     return (
       <>
         <div className='miniCart'>
-          <div className='miniCart__header'> <b className='miniCart__header--bold'>My Bag</b>, {cartItemNumber} { cartItemNumber == 1 ? 'item' : 'items'}</div>
+          <div className='miniCart__header'> <b className='miniCart__header--bold'>My Bag</b>, {cartItemNumber} { cartItemNumber === 1 ? 'item' : 'items'}</div>
           <div className='miniCart__content'> <MiniCartItems cart={this.props.cart}/></div>
 
           <div className='miniCart__total'>

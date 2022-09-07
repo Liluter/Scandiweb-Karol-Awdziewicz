@@ -5,17 +5,19 @@ import '../styles/TypeSwatch.scss'
 export class TypeSwatch extends Component {
   constructor(props){
     super(props)
-    this.state={ ...this.selectName(this.props.attributes.items[0].value)}
-    // this.state={ selected: '' || this.props.attributes.items[0].value}
+    // this.state={ ...this.selectName(this.props.attributes.items[0].value)}
+    this.state={selected: '',
+                number: 0}
 
     this.selectAttribute= this.selectAttribute.bind(this)
     this.selectName= this.selectName.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount(){
     // console.log('TypeSwatch ', this.state)
-    this.props.toggleAttribute( this.state) 
-    this.selectAttribute(this.props.attributes.items[0].value)
+    // this.props.toggleAttribute( this.state) 
+    // this.selectAttribute(this.props.attributes.items[0].value)
   }
 
   selectAttribute = (arg)=>{
@@ -25,11 +27,21 @@ export class TypeSwatch extends Component {
   selectName = (arg)=> {
     switch (this.props.attributes.name){
       case 'Color':
-        return {color: arg};
+        return {"Color": arg};
       default:
     }
   }
 
+  handleClick(item, name){
+    console.log('handle load SWATCH',item)
+  
+    this.selectAttribute(this.selectName(item));
+    this.setState(()=>({number: item} ))
+    this.props.toggleAttribute( item )
+    
+    
+    this.props.toggleAttribute( this.selectName(item) )
+  }
 
   render() {
     // console.log('TypeSwatch state', this.state)
@@ -42,8 +54,10 @@ export class TypeSwatch extends Component {
         <div className='variantColor__options'>
           {items.map((item,index)=><button 
             key={index}
-            onClick={() => {this.props.toggleAttribute( this.selectName( item.value ) ); this.selectAttribute(item.value)}}
-            className={`variantColor__options--Btn ${this.state.selected === item.value ? 'selected' : ''}`}
+            onClick={() => {this.handleClick(index, name) }}
+            // onClick={() => {this.props.toggleAttribute( this.selectName( item.value ) ); this.selectAttribute(item.value)}}
+            className={`variantColor__options--Btn ${this.state.number === index ? 'selected' : ''}`}
+            // className={`variantColor__options--Btn ${this.state.selected === item.value ? 'selected' : ''}`}
             style={{backgroundColor: item.value}}></button>)}
         </div>
       </div>

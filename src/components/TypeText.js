@@ -11,7 +11,7 @@ export class Typetext extends  Component {
     this.selectAttribute= this.selectAttribute.bind(this)
     this.selectName= this.selectName.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
+    // this.handleSelect = this.handleSelect.bind(this)
     
     // this.selectSize = this.selectSize.bind(this)
       //this.selectName(this.props.attributes.items[0].displayValue)
@@ -41,17 +41,17 @@ export class Typetext extends  Component {
     }
   }
   
-  handleSelect(){
-    this.props.toggleAttribute( this.state.selected )
-  }
+  // handleSelect(){
+  //   this.props.toggleAttribute( this.state.selected )
+  // }
 
   handleClick(item, name){
     console.log('handle load',item)
-    // this.props.toggleAttribute( this.selectName(item.displayValue) )
+  
     this.selectAttribute(this.selectName(item));
     this.setState(()=>({number: item} ))
     this.props.toggleAttribute( item )
-    // this.props.toggleAttribute( (let me = new Object)  )
+    
     
     this.props.toggleAttribute( this.selectName(item) )
   }

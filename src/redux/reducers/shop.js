@@ -26,10 +26,10 @@ export default function (state = initialState, action) {
     //   };
     // }
       case ADD_TO_CART: {
-        const {  content } = action.payload;
+        const {  idKey, content } = action.payload;
         return {
           ...state,
-          cart : [...state.cart, content ],
+          cart : [...state.cart, {...content, idKey}],
         }
       }
 

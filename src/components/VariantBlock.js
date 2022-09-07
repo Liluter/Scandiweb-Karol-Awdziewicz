@@ -44,8 +44,8 @@ export class VariantBlock extends Component {
     let { brand, name ,inStock , prices, description, attributes, id} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
     // console.log('product :',this.props.product)
-    console.log('Variant block state: :', this.state)
-    console.log('Variant block props: :', this.props)
+    // console.log('Variant block state: :', this.state)
+    // console.log('Variant block props: :', this.props)
     // console.log(attributes)
     return (
       <aside  className='productDesc__block'>

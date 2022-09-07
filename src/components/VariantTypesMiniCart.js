@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import TypeText from './TypeText'
 import TypeSwatch from './TypeSwatch'
-
+import TypeTextMiniCart from './TypeTextMiniCart'
+import TypeSwatchMiniCart from './TypeSwatchMiniCart'
 
 export class VariantTypesMiniCart extends Component {
   constructor(params) {
@@ -11,9 +12,17 @@ export class VariantTypesMiniCart extends Component {
   selectType(type, attr,index){
     switch (type) {
       case 'swatch': 
-        return <TypeSwatch key={attr.id} attributes={attr} toggleAttribute={this.props.toggleAttribute}/>
+        return <TypeSwatchMiniCart
+        key={index} 
+        attributes={attr} 
+        // toggleAttribute={this.props.toggleAttribute}
+        />
       case 'text':
-        return <TypeText key={attr.id} attributes={attr} toggleAttribute={this.props.toggleAttribute}/>
+        return <TypeTextMiniCart 
+        key={index} 
+        attributes={attr} 
+        // toggleAttribute={this.props.toggleAttribute}
+        />
       default:
         break;
     }
@@ -21,10 +30,10 @@ export class VariantTypesMiniCart extends Component {
 
   render() {
     let attributes = this.props.attributes
-    // console.log('VariantType',attributes)
+    // console.log('VariantTypeMiniCart props',this.props)
     return (
         <>
-        {attributes.map((attr, index)=> this.selectType(attr.type, attr,index))}
+        {attributes.map((attr, index)=> this.selectType(attr.type, attr, index))}
           
         </>
     )

@@ -1,5 +1,5 @@
 import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, ADD_TO_CART_ITEM} from "./actionTypes";
-
+import { nanoid } from '@reduxjs/toolkit'
 let nextTodoId = 0
 // let nextCartId = 0
 export const addTodo = (content) => ({
@@ -24,6 +24,7 @@ export const toggleCurrency = currency => ({
 export const addToCart = (content) => ({
   type: ADD_TO_CART,
   payload: {
+    idKey: nanoid(),
     content,
   }
 })

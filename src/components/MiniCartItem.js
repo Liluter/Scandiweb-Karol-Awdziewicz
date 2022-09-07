@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import '../styles/MiniCartItem.scss'
 import { currencyNumber } from '../utils/currencyNumber'
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
+import { addToCartItem} from '../redux/action'
 
 import {ReactComponent as Plus} from '../assets/Plus.svg'
 import {ReactComponent as Minus} from '../assets/Minus.svg'
 import VariantTypesMiniCart from './VariantTypesMiniCart'
-import { addToCartItem} from '../redux/action'
+import VariantTypes from './VariantTypes'
+import '../styles/MiniCartItem.scss'
 
 export class MiniCartItem extends Component {
   constructor(props) {
@@ -21,6 +22,12 @@ export class MiniCartItem extends Component {
     this.setState((state,props)=>( (state.counter === props.item.gallery.length -1) ? {counter: 0 }: {counter: state.counter + 1} ))
   }
 
+  // toggleAttribute = (arg) =>{
+  //   this.setState((state,props)=> ({choices: {...arg}  }))
+  //   // console.log('toggleAttribute activated temporarrySet :' , arg)
+  // }
+
+
   // to redux
   toCartItem = (num) => {
     console.log('toCartItem payload' )
@@ -29,9 +36,9 @@ export class MiniCartItem extends Component {
   // /onClick={()=> {  this.toCart({...this.state, ...this.props.product})
 
   render() {
-    console.log('MiniCartItem',this.props)
+    console.log(`MiniCartItem ${this.props.item.name}`,this.props)
 
-    let {brand, name, prices, gallery} = this.props.item
+    let {brand, name, prices, gallery, idKey} = this.props.item
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + prices[currencyNumber(this.props.currentCurrency)].amount
     return (
       <div className='miniCartItem'>
@@ -40,6 +47,13 @@ export class MiniCartItem extends Component {
           <h2 className='miniCartItem__variant--name'>{name}</h2>
           <h2 className='miniCartItem__variant--price'>{price}</h2>
           {/* <VariantTypesMiniCart attributes={this.props.cart}/> */}
+
+          <VariantTypesMiniCart 
+          attributes={this.props.item.attributes}
+          idKey={idKey}
+          // toggleAttribute={this.toggleAttribute} 
+          />
+
         </div>
         <div className='miniCartItem__counter'>
           <button className='miniCartItem__counter--button' onClick={()=>this.toCartItem(this.props.item.count)}><Plus/></button>

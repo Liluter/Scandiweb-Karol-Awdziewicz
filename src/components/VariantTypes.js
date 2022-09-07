@@ -35,7 +35,7 @@ export class VariantTypes extends Component {
     // console.log("Let attributes",attributes)
     return (
         <div 
-        // key={this.props.productId}
+        key={this.props.productId}
         >
         {this.props.attributes.map((attr, index, arr)=><div key={index + this.props.productId}> {this.selectType(attr.type, attr,index)}</div>)}
           

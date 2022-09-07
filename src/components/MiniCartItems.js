@@ -5,7 +5,7 @@ export class MiniCartItems extends Component {
     // console.log('MiniCartItems',this.props.cart)
     return (
 
-      this.props.cart.map((item, index)=> <MiniCartItem key={item.id + index} item={item}/>) 
+      this.props.cart.map((item, index)=> <MiniCartItem key={index+item.idKey} item={item}/>) 
       
     )
   }
