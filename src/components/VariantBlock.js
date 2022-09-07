@@ -8,40 +8,51 @@ import { addToCart } from '../redux/action';
 import { currencyNumber } from '../utils/currencyNumber';
 import Description from './Description';
 import VariantTypes from './VariantTypes';
+import Typetext from './TypeText';
 
+import {gql} from '@apollo/client'
+import {Query} from '@apollo/client/react/components'
 
 export class VariantBlock extends Component {
   constructor(props){
     super(props)
-    this.state = {temporarySet:{id: this.props.product.id ,
-                                name: this.props.product.name,
-                                brand: this.props.product.brand,
-                                prices: this.props.product.prices,
-                                gallery: this.props.product.gallery,
-                                count: 1,}}
+    this.state = {
+                  choices: {},
+                  count: 1}
+
     this.toCart = this.toCart.bind(this)
   }
 
-  
+  componentDidMount(){
+    // console.log('monunted !!!! ', this.state.name, this.state.counter)
+    this.setState(()=>({...this.state}))
+
+  }
+// attributes: this.props.product.attributes
   toggleAttribute = (arg) =>{
-    this.setState((state,props)=> ({temporarySet:{...state.temporarySet, ...state.temporarySet.attributes , ...arg }  }))
+    this.setState((state,props)=> ({choices: {...arg}  }))
+    // console.log('toggleAttribute activated temporarrySet :' , arg)
   }
   // to redux
   toCart = (payload) => {
     this.props.addToCart(payload)
   }
+  
 
   render() {
     // console.log('VariantBloc state',this.state)
-    let { brand, name ,inStock , prices, description, attributes} = this.props.product
+    let { brand, name ,inStock , prices, description, attributes, id} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
-    
+    // console.log('product :',this.props.product)
+    console.log('Variant block state: :', this.state)
+    console.log('Variant block props: :', this.props)
+    // console.log(attributes)
     return (
-      <aside className='productDesc__block'>
+      <aside  className='productDesc__block'>
         <h1 className='productDesc__block--header'>{brand}</h1>
         <h2 className='productDesc__block--name'>{name}</h2>
 
-        <VariantTypes attributes={attributes} toggleAttribute={this.toggleAttribute}/>
+        <VariantTypes  productId={id} attributes={this.props.product.attributes} toggleAttribute={this.toggleAttribute}/>
 
         <div className='productDesc__block--price'>
           <div className='price__label'>PRICE:</div>
@@ -52,7 +63,7 @@ export class VariantBlock extends Component {
 
         <button 
           className={`productDesc__block--button ${inStock ? '' : 'notInStock'}`}
-          onClick={()=> {  this.toCart(this.state.temporarySet)  }} >
+          onClick={()=> {  this.toCart({...this.state, ...this.props.product})  }} >
           {inStock ? 'ADD TO CART' : 'NOT IN STOCK' }
         </button>
 
@@ -68,5 +79,3 @@ export class VariantBlock extends Component {
 export default connect(state => ({currentCurrency: getCurrentCurrency(state)}), {addToCart} )(VariantBlock)
 //export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)
 // { this.props.product.prices[currencyNumber(this.props.currentCurrency)].currency.symbol }{this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount}
-
-// Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.

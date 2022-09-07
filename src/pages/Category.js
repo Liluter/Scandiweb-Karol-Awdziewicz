@@ -21,7 +21,7 @@ class Category extends React.Component {
     return (
     <main className='category background'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
-      <ProductCards 
+      <ProductCards key={this.props.category}
       category={this.props.category} 
       // currentCurency={this.props.currentCurency}
       />

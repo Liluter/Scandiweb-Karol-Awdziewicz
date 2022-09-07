@@ -47,7 +47,7 @@ class App extends React.Component {
           <Route path="/all" element={<Category category={this.state.category} />}/>
           <Route path="/clothes" element={<Category category={this.state.category} />}/>
           <Route path="/tech" element={<Category category={this.state.category} />}/>
-          <Route path="/:category/:productId" element={<ProductDescription/>}/>
+          <Route path="/:category/:productId" element={<ProductDescription  />}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>

@@ -45,27 +45,34 @@ query GetProduct($productId: String!) {
 
 
 export class ProductDescription extends Component {
+  constructor(props) {
+    super(props)
+    this.state={productId : this.props.params}
+  }
+
+  componentDidMount(){
+    // console.log('PDP mount props',this.props);
+    // console.log('PDP mount state',this.state);
+  }
   
-
-  // componentDidMount(){
-  //   console.log('PDP mount props',this.props);
-  //   // console.log('PDP mount state',this.state);
-  // }
-
+  
 
   render() {
 
     let { category , productId} = this.props.params;
-    
+    // console.log('ProductDescription props', this.props)
+    // console.log('ProductDescription state', this.state)
     return (
-        <div className='productDesc'>
+        <div className='productDesc' >
           <Query  
           query={GET_PRODUCT} variables={{"productId": productId}} >
-            {({loading, data})=>{
+            {({loading, data, refetch, fetchMore})=>{
               if (loading) return "Loading...";
               const { product} = data;
+              // console.log('query prod',product)
+              refetch()
               return (
-              <ProductDescWrapper product={product}/>
+              <ProductDescWrapper  productId={productId} product={product}/>
               )
             }}
         </Query>
