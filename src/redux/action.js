@@ -1,15 +1,15 @@
-import { ADD_TODO, TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
-import { nanoid } from '@reduxjs/toolkit'
-let nextTodoId = 0
+import { TOGGLE_TODO, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
+// import { nanoid } from '@reduxjs/toolkit'
+// let nextTodoId = 0
 let nextCartItem = 0
 // let nextCartId = 0
-export const addTodo = (content) => ({
-  type: ADD_TODO,
-  payload: {
-    id: ++nextTodoId,
-    content,
-  },
-})
+// export const addTodo = (content) => ({
+//   type: ADD_TODO,
+//   payload: {
+//     id: ++nextTodoId,
+//     content,
+//   },
+// })
 
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,

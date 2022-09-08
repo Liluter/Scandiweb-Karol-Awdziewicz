@@ -3,21 +3,23 @@ import '../styles/MiniCart.scss'
 import { connect } from 'react-redux'
 import { getCart, getCartItemNumber, getTotalAmount, getCurrentCurrency } from '../redux/selectors'
 import MiniCartItems from './MiniCartItems'
-
+import { Link } from 'react-router-dom'
 
 export class MiniCart extends Component {
   constructor(props){
     super(props)
     this.state={}
+    this.handleClick = this.handleClick.bind(this)
   }
 
-
-
+  handleClick(){
+    this.miniCartMenu()
+  }
 
   render() {
     let cartItemNumber = this.props.cartItemNumber;
     // console.log('MINI CART!!! getPrices', this.props.getTotalAmount)
-    console.log('MINI CART!!! getPrices', this.props)
+    // console.log('MINI CART!!! getPrices', this.props)
     // console.log('minicart state',this.state)
     // console.log('minicart array !!!', Object.entries(this.props.itemsByIds)) 
     return (
@@ -32,7 +34,13 @@ export class MiniCart extends Component {
           </div>
           
           <div className='miniCart__footer'>
-          <button className='miniCart__footer--buttonBag'>VIEW BAG</button>
+          <Link to={'cart'} >
+            <button 
+          onClick={()=> console.log(this)}
+              className='miniCart__footer--buttonBag'>
+              VIEW BAG
+            </button>
+          </Link>
           <button className='miniCart__footer--buttonCheckout'>CHECK OUT</button>
           </div>
         </div>

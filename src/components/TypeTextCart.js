@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import '../styles/TypeText.scss'
-import '../styles/TypeTextMiniCart.scss'
+import '../styles/TypeTextCart.scss'
 // import TypeTextOptions from './TypeTextOptions'
 
-export class TypeTextMiniCart extends  Component {
+export class TypeTextCart extends  Component {
   constructor(props){
     super(props)
     this.state={selected: '',
@@ -82,6 +82,6 @@ export class TypeTextMiniCart extends  Component {
   }
 }
 
-export default TypeTextMiniCart
+export default TypeTextCart
 
 //${Object.values(this.state.selected)[0] === item.displayValue ? 'selected' : ''}

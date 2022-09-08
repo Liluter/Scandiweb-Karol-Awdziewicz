@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-// import TypeText from './TypeText'
-// import TypeSwatch from './TypeSwatch'
-import TypeTextMiniCart from './TypeTextMiniCart'
-import TypeSwatchMiniCart from './TypeSwatchMiniCart'
 
-export class VariantTypesMiniCart extends Component {
+// import TypeTextMiniCart from './TypeTextMiniCart'
+import TypeTextCart from './TypeTextCart'
+// import TypeSwatchMiniCart from './TypeSwatchMiniCart'
+import TypeSwatchCart from './TypeSwatchCart'
+
+export class VariantTypesCart extends Component {
   constructor(params) {
     super(params)
     this.selectType = this.selectType.bind(this)
@@ -12,7 +13,7 @@ export class VariantTypesMiniCart extends Component {
   selectType(type, attr,index){
     switch (type) {
       case 'swatch': 
-        return <TypeSwatchMiniCart
+        return <TypeSwatchCart
         key={index} 
         attributes={attr} 
         toggleAttribute={this.props.toggleAttribute}
@@ -20,7 +21,7 @@ export class VariantTypesMiniCart extends Component {
         item={this.props.item}
         />
       case 'text':
-        return <TypeTextMiniCart 
+        return <TypeTextCart 
         key={index} 
         attributes={attr} 
         toggleAttribute={this.props.toggleAttribute}
@@ -44,4 +45,4 @@ export class VariantTypesMiniCart extends Component {
   }
 }
 
-export default VariantTypesMiniCart
+export default VariantTypesCart

@@ -20,7 +20,7 @@ componentDidMount(){
 }
 
   render() {
-    console.log('ProdDescWrapp: ', this.props )
+    // console.log('ProdDescWrapp: ', this.props )
     return (
       <>
         <ThumbsBlock photos={this.props.product.gallery}

@@ -38,7 +38,7 @@ export const getCurrentCurrency = store => store.shop.currentCurrency;
 export const getCurrentPrices = store => Object.entries(store.shop.ItemsByIds).map((e,i)=> e[1].product.prices[getCurrNumber(store)].amount * e[1].count  ) ;
 export const getCurrNumber = store => currencyNumber(store.shop.currentCurrency) ;
 export const getTotalAmount = store =>  ( Object.keys(getCart(store)).length > 0 ? getCurrentPrices(store).reduce((p,c)=> (p + c) ).toFixed(2) : 0 );
-export const getTaxAmount = store => ( Object.keys(getCart(store)).length > 0 ?  getCurrentPrices(store).reduce((p,c)=> (p + c)  * 0.21 ).toFixed(2) : 0 );
+export const getTaxAmount = store => (( Object.keys(getCart(store)).length > 0 ?  getCurrentPrices(store).reduce((p,c)=> (p + c)) : 0 )*0.21).toFixed(2);
 // export const getCartItemNumber = store => store.shop.cart.length;
 
 // export const getCart = store => store.shop.cart;

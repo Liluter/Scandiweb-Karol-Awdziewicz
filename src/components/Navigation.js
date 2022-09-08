@@ -42,11 +42,15 @@ export class Navigation extends Component {
   }
 
   dropDownMenu(e){
-    // console.log('object properties  ', Object.keys(this.props.ItemsByIds).length )
+    // console.log('Psrent search ', document.querySelector("[className]='container'"))
     this.setState({toggleDropdown: !this.state.toggleDropdown});
-    this.timer = setTimeout( () => this.setState({toggleDropdown: false}),5000)
+    // const ParentElement =  document.getElementsByTagName('body')
+    // ParentElement.addEventListener("click", ()=>(this.setState({toggleDropdown: !this.state.toggleDropdown})), true)
+    // const ParentElement =  e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+    // ParentElement.addEventListener("click", ()=> (this.setState({toggleDropdown: false}) ),false )
+    // this.timer = setTimeout( () => this.setState({toggleDropdown: false}),5000)
   }
-
+  //$0.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
   
 
   miniCartMenu(e){
@@ -87,7 +91,7 @@ export class Navigation extends Component {
                 <CartIcon onClick={this.miniCartMenu}/>
                 {Object.keys(this.props.ItemsByIds).length > 0 ? <div className='cartCounter'>{Object.keys(this.props.ItemsByIds).length}</div> : null}
                 {/* {this.props.cart.length > 0 ? <div className='cartCounter'>{this.props.length}</div> : null} */}
-                {  this.props.miniCart ? <MiniCart toggleFog={this.props.toggleFog}/> : null}
+                {  this.props.miniCart ? <MiniCart toggleFog={this.props.toggleFog} /> : null}
               </li>
             </ul>
           </menu>

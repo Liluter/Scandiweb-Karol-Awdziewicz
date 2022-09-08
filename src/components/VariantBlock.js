@@ -8,43 +8,56 @@ import { addToCart } from '../redux/action';
 import { currencyNumber } from '../utils/currencyNumber';
 import Description from './Description';
 import VariantTypes from './VariantTypes';
-import Typetext from './TypeText';
+// import Typetext from './TypeText';
 
-import {gql} from '@apollo/client'
-import {Query} from '@apollo/client/react/components'
 
 export class VariantBlock extends Component {
   constructor(props){
     super(props)
-    this.state = {
-                  choices: {},
-                  count: 1}
+    this.state = { choices: {},
+                    count: 1 }
 
-    this.toCart = this.toCart.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount(){
     // console.log('monunted !!!! ', this.state.name, this.state.counter)
-    this.setState(()=>({...this.state}))
+    // this.setState(()=>({...this.state}))
 
   }
+
+
+
+
+    //     ...state,
+    //     allIds: [...state.allIds, id],
+    //     byIds: {
+    //       ...state.byIds,
+    //       [id]: {
+    //         content,
+    //         completed: false
+    //       }
+    //     }
+    //   };
+
+
 // attributes: this.props.product.attributes
   toggleAttribute = (arg) =>{
-    this.setState((state,props)=> ({choices: {...arg}  }))
-    // console.log('toggleAttribute activated temporarrySet :' , arg)
+    this.setState(()=> (  { ...this.state, choices: {...this.state.choices, ...arg} }  ))
+    console.log('toggleAttribute activated temporarrySet :', this.state.choices)
   }
   // to redux
-  toCart = (payload) => {
+  handleClick = (payload) => {
     this.props.addToCart(payload)
   }
   
 
   render() {
     // console.log('VariantBloc state',this.state)
-    let { brand, name ,inStock , prices, description, attributes, id} = this.props.product
+    let { brand, name ,inStock , prices, description, id} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
     // console.log('product :',this.props.product)
-    // console.log('Variant block state: :', this.state)
+    console.log('Variant block state: !!!!!! :', this.state)
     // console.log('Variant block props: :', this.props)
     // console.log(attributes)
     return (
@@ -63,7 +76,7 @@ export class VariantBlock extends Component {
 
         <button 
           className={`productDesc__block--button ${inStock ? '' : 'notInStock'}`}
-          onClick={()=> {  this.toCart({...this.state, ...this.props.product})  }} >
+          onClick={()=> {  this.handleClick({...this.state, ...this.props.product})  }} >
           {inStock ? 'ADD TO CART' : 'NOT IN STOCK' }
         </button>
 

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_TODO, TOGGLE_CURRENCY, TOGGLE_TODO ,ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "../actionTypes";
+import {  TOGGLE_CURRENCY,ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "../actionTypes";
 
 const initialState = {
   // allIds: [],
@@ -26,7 +26,8 @@ export default function (state = initialState, action) {
     // }
       //test good ok
       case ADD_TO_CART: {
-        const {  id, idKey, product } = action.payload;
+        const {  id, product } = action.payload;
+        // const {  id, idKey, product } = action.payload;
         return {
           ...state,
           ItemsByIds: {

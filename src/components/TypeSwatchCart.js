@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import '../styles/TypeSwatchMiniCart.scss'
+import '../styles/TypeSwatchCart.scss'
 
 
-export class TypeSwatchMiniCart extends Component {
+export class TypeSwatchCart extends Component {
   constructor(props){
     super(props)
     // this.state={ ...this.selectName(this.props.attributes.items[0].value)}
@@ -61,4 +61,4 @@ export class TypeSwatchMiniCart extends Component {
   }
 }
 
-export default TypeSwatchMiniCart
+export default TypeSwatchCart

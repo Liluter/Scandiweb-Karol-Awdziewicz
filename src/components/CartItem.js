@@ -4,15 +4,18 @@ import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
 import { addToCartItem} from '../redux/action'
 
-import {ReactComponent as Plus} from '../assets/Plus.svg'
-import {ReactComponent as Minus} from '../assets/Minus.svg'
-import VariantTypesMiniCart from './VariantTypesMiniCart'
+import {ReactComponent as Plus} from '../assets/PlusBig.svg'
+// import {ReactComponent as Plus} from '../assets/Plus.svg'
+import {ReactComponent as Minus} from '../assets/MinusBig.svg'
+// import {ReactComponent as Minus} from '../assets/Minus.svg'
+// import VariantTypesMiniCart from './VariantTypesMiniCart'
+import VariantTypesCart from './VariantTypesCart'
 // import VariantTypes from './VariantTypes'
-import '../styles/MiniCartItem.scss'
+import '../styles/CartItem.scss'
 
 
 
-export class MiniCartItem extends Component {
+export class CartItem extends Component {
   constructor(props) {
     super(props)
     this.state={counter:0}
@@ -71,7 +74,7 @@ export class MiniCartItem extends Component {
           <h1 className='miniCartItem__variant--header'>{brand}</h1>
           <h2 className='miniCartItem__variant--name'>{name}</h2>
           <h2 className='miniCartItem__variant--price'>{price}</h2>
-          <VariantTypesMiniCart 
+          <VariantTypesCart 
           attributes={this.props.item.product.attributes}
           // idKey={idKey}
           toggleAttribute={this.toggleAttribute}
@@ -98,5 +101,5 @@ export class MiniCartItem extends Component {
   }
 }
 
-export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) , {addToCartItem} )(MiniCartItem)
+export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) , {addToCartItem} )(CartItem)
 //connect(state => ({currentCurrency: getCurrentCurrency(state)}), {addToCart} )(VariantBlock)

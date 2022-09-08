@@ -1,6 +1,4 @@
 import React from 'react'
-import {gql} from '@apollo/client'
-import {Query} from '@apollo/client/react/components'
 import ProductCards from '../components/ProductCards'
 import '../styles/Category.scss'
 

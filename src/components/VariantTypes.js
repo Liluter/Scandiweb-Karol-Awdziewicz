@@ -14,13 +14,13 @@ export class VariantTypes extends Component {
     switch (type) {
       case 'swatch': 
         return <TypeSwatch 
-        // key={this.props.productId+index} 
+        key={this.props.productId+index} 
         productId={this.props.productId} 
         attributes={attr} 
         toggleAttribute={this.props.toggleAttribute}/>
       case 'text':
         return <TypeText 
-        // key={this.props.productId+index} 
+        key={this.props.productId+index} 
         productId={this.props.productId} 
         attributes={attr} 
         toggleAttribute={this.props.toggleAttribute}/>

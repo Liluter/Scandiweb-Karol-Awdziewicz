@@ -29,7 +29,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 18px;
-        transition: all 200ms ease;
+        transition: all 150ms ease;
         &.selected{
           background-color: #1D1F22;
           outline: 1px solid #1D1F22;
@@ -41,7 +41,7 @@
           background-color: #9d9d9d;
           outline: 1px solid #1D1F22;
           color: #FFFFFF;
-          box-shadow: 0px 0px 0px 2px  #5ECE7B;
+          box-shadow: 0px 0px 0px 3px  #5ECE7B;
           outline: 1px solid #ffffff;
         }
       }

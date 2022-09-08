@@ -15,7 +15,9 @@ class App extends React.Component {
 
     this.categorySelect = this.categorySelect.bind(this)
     this.toggleFog = this.toggleFog.bind(this)
+    this.closeFog = this.closeFog.bind(this)
     this.toggleMiniCart = this.toggleMiniCart.bind(this)
+    this.closeMiniCart = this.closeMiniCart.bind(this)
     // this.changeCurrency = this.changeCurrency.bind(this);
   }
 
@@ -24,12 +26,20 @@ class App extends React.Component {
   // }
   toggleFog(){
     this.setState(()=>({toggleFog: !this.state.toggleFog}))
-    
+  }
+  closeFog(){
+    this.setState(()=>({toggleFog: false}))
   }
 
   toggleMiniCart(){
     this.setState(()=>({miniCart: !this.state.miniCart}))
     this.toggleFog()
+    // console.log('Run toggle mini cart')
+  }
+  closeMiniCart(){
+    this.setState(()=>({miniCart: false}))
+    this.closeFog()
+    // console.log('Run Close mini cart')
   }
 
 
@@ -48,7 +58,7 @@ class App extends React.Component {
           <Route path="/clothes" element={<Category category={this.state.category} />}/>
           <Route path="/tech" element={<Category category={this.state.category} />}/>
           <Route path="/:category/:productId" element={<ProductDescription  />}/>
-          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/cart" element={<Cart closeMiniCart={this.closeMiniCart}/>}/>
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
               <h3>There's nothing here!</h3>

@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react'
+import React, { Component} from 'react'
 import '../styles/TypeText.scss'
 // import TypeTextOptions from './TypeTextOptions'
 
@@ -6,7 +6,7 @@ export class Typetext extends  Component {
   constructor(props){
     super(props)
     this.state={selected: '',
-                number: 0}
+                number: ''}
 
     this.selectAttribute= this.selectAttribute.bind(this)
     this.selectName= this.selectName.bind(this)
@@ -23,8 +23,8 @@ export class Typetext extends  Component {
       // console.log(`Mount ${this.props.productId}`)
     }
     
-  selectAttribute = (arg)=>{
-    this.setState(()=>({...this.state, selected: arg,}))
+  selectAttribute = (arg , item)=>{
+    this.setState(()=>({...this.state, selected: arg, number : item}))
   }
 
   selectName = (arg)=> {
@@ -47,10 +47,10 @@ export class Typetext extends  Component {
 
   handleClick(item, name){
     // console.log('handle load',item)
-  
-    this.selectAttribute(this.selectName(item));
-    this.setState(()=>({number: item} ))
-    this.props.toggleAttribute( item )
+    console.log('handle load TEXT',item)
+    this.selectAttribute(this.selectName(item) , item); // selected:{Capacity:1}
+    // this.setState(()=>({...this.state, number: item  }  )) // number :1
+    // this.props.toggleAttribute( item )
     
     
     this.props.toggleAttribute( this.selectName(item) )
@@ -58,8 +58,8 @@ export class Typetext extends  Component {
   
   render() {
     
-    // console.log('TypeText props:', this.props)
-    // console.log('TypeText state', this.state)
+    console.log('TypeText state', this.state)
+    console.log('TypeText props:', this.props)
     // console.log((this.state.selected.Size !== this.props.attributes.items[0].displayValue))
     // console.log('Props attributes', this.props)
     // console.log(this.props.attributes.items[0].displayValue)
