@@ -1,17 +1,17 @@
-.miniCartItem__variant--contentText{
+.CartItem__variant--contentText{
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
   
   .variant__label{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
     margin-top: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     height: 16px;
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
   }
   .variant__options{
     display:flex;
@@ -20,16 +20,17 @@
     flex-shrink: 0;
     width: 292px;
     &--Btn{
-      width: 24px;
-      height: 24px;
+      width: 63px;
+      height: 45px;
+      margin-bottom: 8px;
       background-color: #FFFFFF;
       border: 1px solid #1D1F22;
       border-radius: 0;
       font-family: 'Source Sans Pro';
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
-      line-height: 160%;
+      font-size: 16px;
+      line-height: 18px;
       transition: all 200ms ease;
       &.selected{
         background-color: #1D1F22;

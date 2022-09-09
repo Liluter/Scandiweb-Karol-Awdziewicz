@@ -29,6 +29,7 @@ export const getTodos = store =>
 //   }
 // };
 export const getCart = store => store.shop.ItemsByIds ;
+export const getShop = store => store.shop ;
 
 export const getCartItemNumber = store => ( Object.keys(getCart(store)).length > 0 ? Object.entries(store.shop.ItemsByIds).map((e,i)=> e[1].count  ).reduce((p,c)=> (p + c) ) : 0 )
 // export const getCartItemNumber = store => Object.keys(store.shop.ItemsByIds).length;

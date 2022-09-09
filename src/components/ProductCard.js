@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../styles/ProductCard.scss'
 import {ReactComponent as ToCartBtn} from '../assets/cartIcon2.svg'
 import {currencyNumber} from '../utils/currencyNumber'
-
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
 import { Link } from 'react-router-dom'
+import '../styles/ProductCard.scss'
 
 export class ProductCard extends Component {
   constructor(props){
@@ -25,9 +24,15 @@ export class ProductCard extends Component {
     return (
       <div className={'productCard'} onMouseEnter={this.toggleShowBtn }
       onMouseLeave={this.toggleShowBtn }>
-        <Link to={`/${this.props.product.category}/${this.props.product.id}`}><img className={`productCard__image ${this.props.product.inStock ? null : 'outOfStock'}`} src={this.props.product.gallery[0]}  alt={this.props.product.name}/></Link>
+        
+          <img className={`productCard__image ${this.props.product.inStock ? null : 'outOfStock'}`} src={this.props.product.gallery[0]}  alt={this.props.product.name}/>
+        
         <div className='productCard__stockStatus'>{this.props.product.inStock ? null : <div className='productCard__stockStatus--showStatus'>OUT OF STOCK</div>}</div>
-        <div className='productCard__Btn'>{ this.state.showBtn ? ( this.props.product.inStock ? <div className='productCard__Btn--pushToCart'><ToCartBtn /></div> : null) : null}</div>
+        <div className='productCard__Btn'>
+          { this.state.showBtn 
+          ? ( this.props.product.inStock 
+          ?  <Link to={`/${this.props.product.category}/${this.props.product.id}`}> <div className='productCard__Btn--pushToCart'><ToCartBtn /></div></Link>   : null) : null}
+        </div>
         <p className={`productCard__name ${this.props.product.inStock ? null : 'outOfStock'}`}>{this.props.product.name}</p>
         <p className={`productCard__price ${this.props.product.inStock ? null : 'outOfStock'}`}>{ price }</p>
       </div>

@@ -16,12 +16,7 @@ export class Typetext extends  Component {
     // this.selectSize = this.selectSize.bind(this)
       //this.selectName(this.props.attributes.items[0].displayValue)
     }
-    componentDidMount(){
-      // this.setState(()=>({...this.state, selected: this.selectName(this.props.attributes.items[0].displayValue) }))
-      // this.props.toggleAttribute( this.state.number )
-      // this.handleSelect()
-      // console.log(`Mount ${this.props.productId}`)
-    }
+    
     
   selectAttribute = (arg , item)=>{
     this.setState(()=>({...this.state, selected: arg, number : item}))
@@ -46,29 +41,17 @@ export class Typetext extends  Component {
   // }
 
   handleClick(item, name){
-    // console.log('handle load',item)
-    console.log('handle load TEXT',item)
+    
+    // console.log('handle load TEXT',item)
     this.selectAttribute(this.selectName(item) , item); // selected:{Capacity:1}
-    // this.setState(()=>({...this.state, number: item  }  )) // number :1
-    // this.props.toggleAttribute( item )
+    
     
     
     this.props.toggleAttribute( this.selectName(item) )
   }
   
   render() {
-    
-    console.log('TypeText state', this.state)
-    console.log('TypeText props:', this.props)
-    // console.log((this.state.selected.Size !== this.props.attributes.items[0].displayValue))
-    // console.log('Props attributes', this.props)
-    // console.log(this.props.attributes.items[0].displayValue)
-    // console.log('PDP block type text state :',this.state)
     let {name,items} = this.props.attributes
-    
-    // console.log('items :',items)
-    // console.log('attributes !!!:',this.state)
-    // console.log('Obj val :', Object.values(this.state.selected)[0])
     return (
       <div   className='productDesc__block--variantSize'>
         <div  className='variantSize__label'>{name.toUpperCase()}:</div>
@@ -86,5 +69,3 @@ export class Typetext extends  Component {
 }
 
 export default Typetext
-
-//${Object.values(this.state.selected)[0] === item.displayValue ? 'selected' : ''}

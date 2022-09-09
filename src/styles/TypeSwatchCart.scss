@@ -1,15 +1,15 @@
-.miniCartItem__variant--contentSwatch{
+.CartItem__variant--contentSwatch{
   display:flex;
   flex-direction: column;
-  margin-bottom: 2px;
+  margin-bottom: 0;
   //scroll
- 
+
   .variant__swatch--label{
-    font-family: 'Raleway';
+    font-family: 'Roboto Condensed';
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
     color:#1D1F22;
     margin-top: 8px;
     margin-bottom: 10px;
@@ -22,8 +22,9 @@
     width: 292px;
     &--Btn{
       border: none;
-      width: 16px;
-      height: 16px;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
       background-color: #D3D2D5;
       border-radius: 0;
       box-shadow: 0 0 4px rgb(168, 172, 176);
@@ -44,7 +45,7 @@
         background-color: #9d9d9d;
         outline: 1px solid #1D1F22;
         color: #FFFFFF;
-        box-shadow: 0px 0px 0px 2px  #5ECE7B;
+        box-shadow: 0px 0px 0px 3px  #5ECE7B;
         outline: 1px solid #ffffff;
       }
     }

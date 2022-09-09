@@ -40,7 +40,8 @@ export class MiniCartItem extends Component {
   }
   toCartItemSub = ( itemStoreId , prev) => {
     const amount = false
-        if (prev === 0) {
+        if (prev === 1) {
+          this.props.removeItem(itemStoreId)
       } else {
         this.props.addToCartItem(itemStoreId, amount)
       }
@@ -61,7 +62,7 @@ export class MiniCartItem extends Component {
   // /onClick={()=> {  this.toCart({...this.state, ...this.props.product})
 
   render() {
-    // console.log(`MiniCartItem ${this.props.item.product.name} PROPS:`,this.props)
+    console.log(`MiniCartItem ${this.props.item.product.name} PROPS:`,this.props)
 
     let {brand, name, prices, gallery, idKey} = this.props.item.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + prices[currencyNumber(this.props.currentCurrency)].amount

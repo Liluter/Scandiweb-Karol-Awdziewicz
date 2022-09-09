@@ -2,6 +2,7 @@
   padding: 0 100px 0 100px;
   margin-top:80px;
   width: inherit;
+  margin-bottom:80px;
   // position:relative;
   &__header{
     width: 84px;
@@ -90,20 +91,43 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 120%;
+      border: none;
       color: #ffffff;
+      cursor: pointer;
+      &:hover{
+        background-color: #2fcd5f;
+      }
     }
   }
+  //scroll feature 
+
+  // &__content{
+  //   // background-color: #999999;
+  //   position: relative;
+  //   overflow-y: hidden;
+  //   scrollbar-width: thin;
+  //   scrollbar-color: #5ECE7B #f1f1f1;
+  //   height: 667px;
+  //   &:hover{
+  //     overflow-y: scroll;
+  //     // box-shadow: 0 0 20px #d9d9d9;
+  //   }
+  //   &:hover::-webkit-scrollbar{
+  //     width: 6px;
+  //   }
+  //   &:hover::-webkit-scrollbar-track{
+  //     background: #f1f1f1;
+  //   }
+  //   &:hover::-webkit-scrollbar-thumb{
+  //     width: 6px;
+  //     background: #5ECE7B;
+  //     border-radius: 3px;
+  //     box-shadow: inset 0 0 1px rgb(0, 0, 0); 
+  //   }
+  // }
 }
 
-// .category__title{
-//   font-family: 'Raleway';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 42px;
-//   line-height: 160%;
-//   color: #1D1F22;
-//   cursor: default;
-// }
+
 
 @media screen and ( max-width: 600px) {
   .category{

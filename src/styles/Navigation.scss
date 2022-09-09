@@ -122,6 +122,44 @@
   line-height: 16px;
   text-align: center;
   text-transform: uppercase;
+  transition: all 500ms ease;
+  animation: show1 500ms ease-out;
+  
+  &:hover{
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    font-size: 24px;
+  }
+  &.show{
+    animation: show2 500ms ease-out;
+    
+  }
+}
+
+@keyframes show1 {
+	0% {
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    font-size: 14px;}
+  100% {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    font-size: 24px;}
+}
+@keyframes show2 {
+	0% {
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    font-size: 14px;}
+  100% {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    font-size: 24px;}
 }
 
 @keyframes flip-down {

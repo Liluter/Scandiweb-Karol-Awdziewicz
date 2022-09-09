@@ -43,7 +43,7 @@ export class TypeSwatchCart extends Component {
 
     let {name,items} = this.props.attributes
     return (
-      <div className='miniCartItem__variant--contentSwatch'>
+      <div className='CartItem__variant--contentSwatch'>
         <div className='variant__swatch--label'>{name.toUpperCase()}:</div>
         <div className='variant__options'>
           {items.map((item,index)=><button 

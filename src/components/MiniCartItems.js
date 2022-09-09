@@ -4,8 +4,14 @@ export class MiniCartItems extends Component {
   render() {
     // console.log('MiniCartItems push to map', Object.entries(this.props.itemsByIds))
     return (
-
-      Object.entries(this.props.itemsByIds).map((item, index, ItemsByIds)=> <MiniCartItem key={index} itemStoreId={item[0]} item={item[1]}   />) 
+    Object.entries(this.props.itemsByIds)
+      .map((item, index, ItemsByIds)=> 
+        <MiniCartItem 
+        key={index} 
+        itemStoreId={item[0]} 
+        item={item[1]}
+        removeItem={this.props.removeItem}
+        />) 
       
     )
   }

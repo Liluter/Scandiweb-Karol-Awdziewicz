@@ -49,6 +49,15 @@
       border: 1px solid #1D1F22;
       background-color: #ffffff;
       cursor: pointer;
+      &:hover{
+        background-color: #1D1F22;
+      }
+      &:hover :first-child {
+        stroke: #ffffff;
+      }
+      &:hover :nth-child(2){
+        stroke: #ffffff;
+      }
     }
     &--actualCount{
       font-family: 'Raleway';
@@ -63,10 +72,12 @@
     background-color: transparent;
     width: 121px;
     height: 190px;
+    display: flex;
+    align-items: center;
     &--image{
       transition: all 200ms ease;
       width:121px;
-      height: 182px;
+      height: 190px;
       object-fit: contain;
       object-position: 50% 50%;
     }

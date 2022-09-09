@@ -13,14 +13,14 @@ export class TypeTextCart extends  Component {
     // this.selectName= this.selectName.bind(this)  //not necessary
     // this.handleClick = this.handleClick.bind(this)  //not necessary
     // this.handleSelect = this.handleSelect.bind(this)  //not necessary
-    this.shortName = this.shortName.bind(this)   //not necessary
+    // this.shortName = this.shortName.bind(this)   //not necessary
     // this.selectSize = this.selectSize.bind(this)
       //this.selectName(this.props.attributes.items[0].displayValue)
   }
   
-  shortName(input){
-    return (input.length <= 2) ? input : input.slice(0,1)
-  }
+  // shortName(input){
+  //   return (input.length <= 2) ? input : input.slice(0,1)
+  // }
     
   //not necessary
   
@@ -65,14 +65,15 @@ export class TypeTextCart extends  Component {
     // console.log('attributes !!!:',this.state)
     // console.log('Obj val :', Object.values(this.state.selected)[0])
     return (
-      <div   className='miniCartItem__variant--contentText'>
+      <div   className='CartItem__variant--contentText'>
         <div  className='variant__label'>{name.toUpperCase()}:</div>
         <div   className='variant__options' >
           {items.map((item,index,arr)=>
           (<button key={index}
             title={items[index].displayValue}
             // onClick={() => {this.handleClick(index, name) }} //not necessary
-            className={`variant__options--Btn ${this.props.item.product.choices[name] === index ? 'selected' : ''}`}>{this.shortName(items[index].displayValue)}
+            className={`variant__options--Btn ${this.props.item.product.choices[name] === index ? 'selected' : ''}`}>{items[index].displayValue}
+            {/* className={`variant__options--Btn ${this.props.item.product.choices[name] === index ? 'selected' : ''}`}>{this.shortName(items[index].displayValue)} */}
             {/* className={`variant__options--Btn ${this.state.number === index ? 'selected' : ''}`}>{this.shortName(items[index].displayValue)} */}
           </button>) )}
   

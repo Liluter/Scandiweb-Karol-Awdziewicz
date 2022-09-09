@@ -11,7 +11,7 @@ import '../styles/Navigation.scss'
 
 import { connect } from 'react-redux';  
 // import { addTodo } from '../redux/action' // action dispaych
-import { getCurrentCurrency, getCart } from '../redux/selectors'
+import { getCurrentCurrency,getCartItemNumber, getCart } from '../redux/selectors'
 
 const CATEGORIES=gql`
 query TakeCategory {
@@ -25,21 +25,22 @@ query TakeCategory {
 export class Navigation extends Component {
   constructor(props){
     super(props);
-    this.state = {toggleDropdown: false,
-                  // toggleMiniCart: false,
-                  // cartCounter: (props.cart).length}
-                                                      };
+    this.state = {toggleDropdown: false, 
+                  showNumber: false};
     
     this.dropDownMenu = this.dropDownMenu.bind(this);
     this.miniCartMenu = this.miniCartMenu.bind(this);
-    // console.log('constructor state, props',this.state,props)
   }
-  
 
-  componentDidMount(){
-  // this.setState(()=>({cartCounter: this.props.cart).length})) //????
   
-  }
+  componentDidUpdate(prevProps){
+    if (this.props.cartItemNumber !== prevProps.cartItemNumber) {
+      this.setState((state)=>({showNumber: !this.state.showNumber }))
+    
+    }
+    
+}
+
 
   dropDownMenu(e){
     // console.log('Psrent search ', document.querySelector("[className]='container'"))
@@ -50,7 +51,6 @@ export class Navigation extends Component {
     // ParentElement.addEventListener("click", ()=> (this.setState({toggleDropdown: false}) ),false )
     // this.timer = setTimeout( () => this.setState({toggleDropdown: false}),5000)
   }
-  //$0.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
   
 
   miniCartMenu(e){
@@ -86,11 +86,16 @@ export class Navigation extends Component {
                 <span>{this.props.currentCurrency}</span>
                 {this.state.toggleDropdown ? <DropDownCur /> : null}
                 </li>
-              <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}><Caret /></li>
+              <li className={this.state.toggleDropdown ? 'caret open' : 'caret'}>
+                <Caret />
+              </li>
               <li >
-                <CartIcon onClick={this.miniCartMenu}/>
-                {Object.keys(this.props.ItemsByIds).length > 0 ? <div className='cartCounter'>{Object.keys(this.props.ItemsByIds).length}</div> : null}
-                {/* {this.props.cart.length > 0 ? <div className='cartCounter'>{this.props.length}</div> : null} */}
+                <CartIcon 
+                onClick={this.miniCartMenu}
+                />
+                {this.props.cartItemNumber > 0 ? <div className={`cartCounter ${this.state.showNotNumber ? 'showNot' : ''} ${this.state.showNumber ? 'show' : ''}`}>{this.props.cartItemNumber}</div> : null}
+                {/* {Object.keys(this.props.ItemsByIds).length > 0 ? <div className={`cartCounter ${this.state.showNotNumber ? 'showNot' : ''} ${this.state.showNumber ? 'show' : ''}`}>{Object.keys(this.props.ItemsByIds).length}</div> : null} */}
+                
                 {  this.props.miniCart ? <MiniCart toggleFog={this.props.toggleFog} /> : null}
               </li>
             </ul>
@@ -101,5 +106,8 @@ export class Navigation extends Component {
   }
 }
            //redux HOC State  Dispatch  Component
-export default connect(state => ({currentCurrency: getCurrentCurrency(state) , ItemsByIds:getCart(state)}) )(Navigation)
+export default connect(state => ({
+  currentCurrency: getCurrentCurrency(state),
+  cartItemNumber: getCartItemNumber(state),  
+  ItemsByIds:getCart(state)}) )(Navigation)
 //changeCurrency={this.props.changeCurrency} dr
