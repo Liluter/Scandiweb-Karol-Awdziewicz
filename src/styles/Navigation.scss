@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   background: #ffffff;
-  // color: red;
   font-size: 16px;
   height: 80px;
   padding: 0 101px 0 101px;
@@ -172,8 +171,13 @@
     padding: 0 16px 0 16px;
   }
   .nav__menu--cat {
-    & li {
-    padding: 0 8px 0 8px;
+    & ul {
+      a {
+      & li {
+      padding: 28px 8px 0 8px;
+      }
+
+      }
     }
   }
 }

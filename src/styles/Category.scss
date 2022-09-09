@@ -13,7 +13,45 @@
   color: #1D1F22;
   cursor: default;
 }
+.spinnerWrapper{
+  height:170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--spinner{
+    position: absolute;
+    width:120px;
+    height:120px;
+    animation: spinn 2s reverse infinite linear;
+    
+    // opacity:0;
+    &.hide{
+      height:0px;
+      opacity: 0;
+      display: none;
+    }
+    &.noData{
+      animation: noData 2s reverse infinite linear;
+    }
+  }
+  
+}
 
+
+@keyframes noData {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+}
+@keyframes spinn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @media screen and ( max-width: 600px) {
   .category{
     padding: 0 16px 0 16px;
