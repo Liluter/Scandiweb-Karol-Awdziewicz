@@ -47,9 +47,9 @@ export class ProductCards extends Component {
     } else if (windowXsize < 1381) {
       this.setState(()=> ({ pageOneLimit: 3, itemPerPage: 2}))
     } else if (windowXsize < 1440) {
-      this.setState(()=> ({ pageOneLimit: 4, itemPerPage: 3}))
+      this.setState(()=> ({ pageOneLimit: 4, itemPerPage: 2}))
     }  else {
-      this.setState(()=> ({ pageOneLimit: 4, itemPerPage: 3}))
+      this.setState(()=> ({ pageOneLimit: 4, itemPerPage: 2}))
     }
     this.handlePageNumber()
   }
@@ -57,15 +57,19 @@ export class ProductCards extends Component {
   handlePageNumber(){
     window.addEventListener('scroll', ()=> {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    const PagesLimit = Math.ceil( (this.props.data.category.products.length - this.state.pageOneLimit) / this.state.itemPerPage) 
-    // console.log('PAGE LIMIT', PagesLimit)
-    // console.log('Aktual number in page:', ( (this.state.itemPerPage  * (this.state.pageNumber - 1)) + this.state.pageOneLimit  ))
+    const PageTarget = Math.ceil( 1 + ((this.props.data.category.products.length - this.state.pageOneLimit ) / this.state.itemPerPage) ) 
+    console.log('MAX ITEMS: ', this.props.data.category.products.length)
+    console.log('Aktual number in page:', ( (this.state.itemPerPage  * (this.state.pageNumber - 1)) + this.state.pageOneLimit  ))
+    console.log('PAGE TARGET', PageTarget)
+    console.log('ACTUAL PAGE', this.state.pageNumber)
+    console.log('Index limit: ', ( (this.state.itemPerPage  * (this.state.pageNumber -1)) + (this.state.pageOneLimit ) ))
       if ( (scrollTop + clientHeight) === scrollHeight ) {        
-            if (this.state.pageNumber <= (PagesLimit) ){
+            if (this.state.pageNumber < (PageTarget) ){
               this.props.handleSpinner()
                 .then((res) =>  {
-                  this.setState(()=>({...this.state , pageNumber: this.state.pageNumber + 1})) 
+                  this.setState(()=>({ ...this.state, pageNumber: this.state.pageNumber + 1})) 
                   })
+                .catch((e)=>(console.log('error')))
             }
       } 
     } , {passive: true})
@@ -79,7 +83,8 @@ export class ProductCards extends Component {
 
   render() {
     // console.log('Product Cards Props',this.props)
-    console.log('Product Cards State',this.state, window.screen.availWidth)
+    console.log('Product Cards State',this.state )
+    console.log('ACTUAL PAGE', this.state.pageNumber)
     // console.log('HANDLE PAGINATION RESOLVE', this.handlePagination())
     return (
       <div className='productCards'>
@@ -89,12 +94,12 @@ export class ProductCards extends Component {
             const { category} = data;
             // const PageLimit = Math.ceil(data.category.products.length / this.state.itemLimit)
             // console.log('PageLimit', PageLimit)
-
-
-
-            return (<> {category.products.map((product,index)=> ( index < ((this.state.itemPerPage  * (this.state.pageNumber - 1)) + this.state.pageOneLimit  ) ? <ProductCard key={product.id} product={product}/> : null )  )}  </>)
-
-
+            
+            
+            
+            return (<> {category.products.map((product,index)=> ( index < ( (this.state.itemPerPage  * (this.state.pageNumber -1)) + (this.state.pageOneLimit ) ) ? <ProductCard key={product.id} product={product}/> : null )  )}  </>)
+            
+            
             // return (<>{category.products.map((product,index)=> <ProductCard key={product.id} product={product}  />)}</>)
           }}
       </Query>
