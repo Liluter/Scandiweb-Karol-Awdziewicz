@@ -1,36 +1,31 @@
-import { TOGGLE_TODO, REMOVE_FROME_CART, TOGGLE_CURRENCY ,REFRESH, SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
+import { REMOVE_FROME_CART, TOGGLE_CURRENCY ,REFRESH, SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
 // import { nanoid } from '@reduxjs/toolkit'
 // let nextTodoId = 0
 let nextCartItem = 0
-// let nextCartId = 0
-// export const addTodo = (content) => ({
-//   type: ADD_TODO,
-//   payload: {
-//     id: ++nextTodoId,
-//     content,
-//   },
-// })
 
-export const toggleTodo = id => ({
-  type: TOGGLE_TODO,
-  payload: { id }
-});
+// export const toggleTodo = id => ({
+//   type: TOGGLE_TODO,
+//   payload: { id }
+// });
 
 // change actual currency sign
-export const toggleCurrency = currency => ({
+export const toggleCurrency = (currency, label) => ({
   type: TOGGLE_CURRENCY,
-  payload: {currency}
+  payload: {currency, label}
 });
 
 export const addToCart = (product) => ({
   type: ADD_TO_CART,
   payload: {
     id: ++nextCartItem,
-    // idKey: nanoid(),
     product,
   }
 })
 
+export const addToCartItem = (id, amount) => ({
+  type: CHANGE_CART_ITEM_PCS,
+  payload: { id , amount}
+})
 export const removeFromCart = (shop) => ({
   type: REMOVE_FROME_CART,
   payload: {
@@ -43,21 +38,6 @@ export const refreshPage = (shop) => ({
     shop
   }
 })
-
-//good
-// export const addToCartItem = (count) => ({
-//   type: ADD_TO_CART_ITEM,
-//   payload: {
-//     count
-//   }
-// })
-
-//test
-export const addToCartItem = (id, amount) => ({
-  type: CHANGE_CART_ITEM_PCS,
-  payload: { id , amount}
-})
-
 
 
 export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });

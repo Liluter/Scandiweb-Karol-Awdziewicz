@@ -35,6 +35,7 @@ export const getCartItemNumber = store => ( Object.keys(getCart(store)).length >
 // export const getCartItemNumber = store => Object.keys(store.shop.ItemsByIds).length;
 
 export const getCurrentCurrency = store => store.shop.currentCurrency;
+export const getCurrentCurrencyLabel = store => store.shop.currentCurrencyLabel;
 
 export const getCurrentPrices = store => Object.entries(store.shop.ItemsByIds).map((e,i)=> e[1].product.prices[getCurrNumber(store)].amount * e[1].count  ) ;
 export const getCurrNumber = store => currencyNumber(store.shop.currentCurrency) ;

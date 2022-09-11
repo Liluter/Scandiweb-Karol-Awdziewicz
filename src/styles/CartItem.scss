@@ -96,7 +96,6 @@
   &__photo{
     background-color: transparent;
     width: 200px;
-    // height: 288px;
     height: inherit;
     margin-top:24px;
     display: flex;
@@ -133,12 +132,4 @@
   &:last-child{
     margin-bottom: 0;
   }
-
 }
-// @media screen and ( min-width: 678px) {
-//   .CartItem{
-//   // width: 1440px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   }
-// }

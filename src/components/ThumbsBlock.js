@@ -1,3 +1,4 @@
+import { getByTitle } from '@testing-library/react';
 import React, { Component } from 'react'
 
 import '../styles/ThumbsBlock.scss'
@@ -18,9 +19,10 @@ export class ThumbsBlock extends Component {
         <img key={index}
           className='productDesc__thumbs--thumb-item' 
           src={thumb || '/logo192.png' }
-          alt='product_name'
-          onClick={() => this.props.selectPhoto(thumb)}/>
-          
+          title={this.props.name}
+          alt={this.props.name}
+          onClick={() => this.props.selectPhoto(thumb)}
+          />
         )}
       </aside>
     )

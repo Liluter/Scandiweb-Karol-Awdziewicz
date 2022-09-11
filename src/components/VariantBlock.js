@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';  
-import { addToCart } from '../redux/action';
-import { getCurrentCurrency } from '../redux/selectors'
+import { addToCart ,addToCartItem} from '../redux/action';
+import { getCurrentCurrency , getShop} from '../redux/selectors'
 import { currencyNumber } from '../utils/currencyNumber';
 import Description from './Description';
 import VariantTypes from './VariantTypes';
@@ -16,6 +16,7 @@ export class VariantBlock extends Component {
 
     this.handleClick = this.handleClick.bind(this)
     this.showAlert = this.showAlert.bind(this)
+    this.toCartItemAdd = this.toCartItemAdd.bind(this)
   }
 
   toggleAttribute = (arg) =>{
@@ -23,14 +24,36 @@ export class VariantBlock extends Component {
   }
 
   handleClick = (payload) => {
+    // selected
     if (Object.entries(this.state.choices).length > 0){
-      this.props.addToCart(payload)
+
+      if (Object.entries(this.props.shop.ItemsByIds).length > 0 ) {
+        const MatchedIds = Object.entries(this.props.shop.ItemsByIds).filter((e)=>
+          ( e[1].product.id === this.props.product.id  ))
+
+        const FilteredCart = MatchedIds.map((item)=> 
+          Object.entries( item[1].product.choices)).map((choice, index) => 
+            choice.map((item, index) => 
+              item[1] == Object.entries(this.state.choices)[index][1] ))
+              
+        let IndexMatched = false ;
+        FilteredCart.forEach((choice, index) => ( ( choice.every((e)=> e === true) ?  IndexMatched = index : null ) ));
+        ((IndexMatched !== false) ?  this.toCartItemAdd(MatchedIds[IndexMatched][0])  : this.props.addToCart(payload) );
+        }  else {
+          this.props.addToCart(payload) // adding product to shop
+        } 
+
     } else {
-      console.log('MAKE SELECTION FIRST')
       this.setState({alert: true})
     }
   }
   
+  toCartItemAdd = ( itemStoreId ) => {
+    const amount = true
+    this.props.addToCartItem(itemStoreId, amount)
+  }
+
+
   showAlert(){
     if (this.state.alert) {
       setTimeout(()=>{ this.setState({alert: false})},4000)
@@ -45,7 +68,12 @@ export class VariantBlock extends Component {
     let { brand, name ,inStock , prices, description, id} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol 
     + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
-    
+    console.log('VARIANT BLOCK: props', this.props)
+    console.log('VARIANT BLOCK: state', this.state)
+    // console.log('TO CART PAYLOAD: ', {...this.state, ...this.props.product})
+    // const ShopFilteredArr =  Object.entries(this.props.shop.ItemsByIds).filter((e)=> (e[0]!=))
+    // console.log('SHOP iterate :', Object.entries(this.props.shop.ItemsByIds).forEach((e, index)=>   ( e[1].product.id === this.props.product.id ?  console.log("In the store on index", e[0] ) : console.log(e[0] ,' - Not in store') ) ))
+    // console.log("entries",e[1].product.id)
     return (
       <aside  className='productDesc__block'>
         <h1 className='productDesc__block--header'>{brand}</h1>
@@ -72,5 +100,14 @@ export class VariantBlock extends Component {
 }
 
 export default connect(state => 
-  ({currentCurrency: getCurrentCurrency(state)}),
-  {addToCart} )(VariantBlock)
+  ({currentCurrency: getCurrentCurrency(state),
+    shop: getShop(state) }),
+  {addToCart , addToCartItem} )(VariantBlock)
+
+
+  // export default connect(state => ({
+  //   currentCurrency: getCurrentCurrency(state),
+  //   currentCurrencyLabel: getCurrentCurrencyLabel(state),
+  //   cartItemNumber: getCartItemNumber(state),  
+  //   ItemsByIds:getCart(state),
+  //   shop: getShop(state)}), {refreshPage} )(Navigation)

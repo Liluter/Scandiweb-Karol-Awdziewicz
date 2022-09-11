@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/MiniCart.scss'
 import { connect } from 'react-redux'
-import { getCart, getCartItemNumber, getShop, getTotalAmount, getCurrentCurrency } from '../redux/selectors'
+import { getCart, getCartItemNumber, getShop, getTotalAmount, getCurrentCurrency, getCurrentCurrencyLabel } from '../redux/selectors'
 import MiniCartItems from './MiniCartItems'
 import { Link } from 'react-router-dom'
 import { removeFromCart } from '../redux/action'
@@ -22,7 +22,7 @@ export class MiniCart extends Component {
   removeItem(payload){
     // STOTRE DISPATCH
     const ShopFilteredArr =  Object.entries(this.props.shop.ItemsByIds).filter((e)=> (e[0]!== payload))
-    const newShop = { currentCurrency: this.props.shop.currentCurrency , ItemsByIds: {...Object.fromEntries( ShopFilteredArr )} }
+    const newShop = { currentCurrency: this.props.shop.currentCurrency ,  currentCurrencyLabel: this.props.shop.currentCurrencyLabel ,ItemsByIds: {...Object.fromEntries( ShopFilteredArr )} }
     console.log( 'Remove item with Id: ', payload)
     console.log( 'Remove item Old Shop with Id: ', this.props.shop)
     console.log( 'Remove item from Shop ShopFiltered: ',  ShopFilteredArr )
@@ -31,22 +31,11 @@ export class MiniCart extends Component {
     this.props.removeFromCart(newShop)  //dispatch ok 
   }
 
-  // toggleAttribute = (arg) =>{
-  //   this.setState(()=> (  { ...this.state, choices: {...this.state.choices, ...arg} }  ))
-  
-  // }
 
-  // handleClick = (payload) => {
-  //   this.props.addToCart(payload)
-  // }
   
 
   render() {
     let cartItemNumber = this.props.cartItemNumber;
-    // console.log('MINI CART!!! getPrices', this.props.getTotalAmount)
-    // console.log('MINI CART!!! getPrices', this.props)
-    // console.log('minicart state',this.state)
-    // console.log('minicart array !!!', Object.entries(this.props.itemsByIds)) 
     return (
       <>
         <div className='miniCart'>
@@ -79,6 +68,7 @@ export default connect(state => ({
   itemsByIds: getCart(state), 
   getTotalAmount:  getTotalAmount(state), 
   currentCurrency: getCurrentCurrency(state), 
+  currentCurrencyLabel: getCurrentCurrencyLabel(state), 
   shop: getShop(state)}) , {removeFromCart})(MiniCart)
   
   // cartItemNumber: (getCartItemNumber(state) ), 

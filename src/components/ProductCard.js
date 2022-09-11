@@ -24,14 +24,14 @@ export class ProductCard extends Component {
     return (
       <div className={'productCard'} onMouseEnter={this.toggleShowBtn }
       onMouseLeave={this.toggleShowBtn }>
-        
-          <img className={`productCard__image ${this.props.product.inStock ? null : 'outOfStock'}`} src={this.props.product.gallery[0]}  alt={this.props.product.name}/>
-        
+        <Link to={`/${this.props.product.category}/${this.props.product.id}`}>
+          <img className={`productCard__image ${this.props.product.inStock ? null : 'outOfStock'}`} src={this.props.product.gallery[0]}  title={this.props.product.name} alt={this.props.product.name}/>
         <div className='productCard__stockStatus'>{this.props.product.inStock ? null : <div className='productCard__stockStatus--showStatus'>OUT OF STOCK</div>}</div>
+        </Link>
         <div className='productCard__Btn'>
           { this.state.showBtn 
           ? ( this.props.product.inStock 
-          ?  <Link to={`/${this.props.product.category}/${this.props.product.id}`}> <div className='productCard__Btn--pushToCart'><ToCartBtn /></div></Link>   : null) : null}
+            ?  <Link to={`/${this.props.product.category}/${this.props.product.id}`}> <div className='productCard__Btn--pushToCart'><ToCartBtn /></div></Link>   : null) : null}
         </div>
         <p className={`productCard__name ${this.props.product.inStock ? null : 'outOfStock'}`}>{this.props.product.name}</p>
         <p className={`productCard__price ${this.props.product.inStock ? null : 'outOfStock'}`}>{ price }</p>
@@ -41,7 +41,3 @@ export class ProductCard extends Component {
 }
 
 export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(ProductCard)
-
-//{()=> this.props.changeCurrency(curr.symbol)}
-//connect(state => ({currentCurrency: getCurrentCurrency(state)}) )(Navigation)
-// <ToCartBtn />

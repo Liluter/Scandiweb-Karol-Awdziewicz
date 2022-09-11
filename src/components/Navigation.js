@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link , Outlet} from 'react-router-dom'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
-import { getCurrentCurrency,getCartItemNumber, getCart , getShop} from '../redux/selectors'
+import { getCurrentCurrency, getCartItemNumber, getCart , getShop, getCurrentCurrencyLabel} from '../redux/selectors'
 import { refreshPage } from '../redux/action'
 import { connect } from 'react-redux';  
 import {ReactComponent as BrandLogo} from '../assets/brandLogo.svg'
@@ -38,7 +38,6 @@ export class Navigation extends Component {
     if(!sessionStorage.getItem('Store')){
       this.saveStorage()
     } else {
-      const storeFromStorage = sessionStorage.getItem('Store')
       this.storage()
     }
   }
@@ -46,22 +45,20 @@ export class Navigation extends Component {
     if (this.props.cartItemNumber !== prevProps.cartItemNumber) {
       this.setState((state)=>({showNumber: !this.state.showNumber }))
     }
-    const sessionStorageShop = { currentCurrency: this.props.shop.currentCurrency, ItemsByIds: {...this.props.shop.ItemsByIds} }
+    const sessionStorageShop = { currentCurrency: this.props.shop.currentCurrency, currentCurrencyLabel: this.props.shop.currentCurrencyLabel, ItemsByIds: {...this.props.shop.ItemsByIds} }
     sessionStorage.setItem("Store", JSON.stringify(sessionStorageShop))
   }
 
   storage(){
     const Shop = sessionStorage.getItem('Store');
+    // console.log('Shop in session storage',Shop)
     this.props.refreshPage(JSON.parse(Shop))
   }
   
   saveStorage(){
-    const sessionStorageShop = { currentCurrency: this.props.shop.currentCurrency, ItemsByIds: {...this.props.shop.ItemsByIds} }
+    const sessionStorageShop = { currentCurrency: this.props.shop.currentCurrency, currentCurrencyLabel: this.props.shop.currentCurrencyLabel, ItemsByIds: {...this.props.shop.ItemsByIds} }
     sessionStorage.setItem("Store", JSON.stringify(sessionStorageShop))
   }
-
-
-
 
   dropDownMenu(e){
     this.setState({toggleDropdown: !this.state.toggleDropdown});
@@ -74,9 +71,6 @@ export class Navigation extends Component {
   }
 
   render() {
-    console.log('NAVIGATION PROPS:', this.props.shop)
-    // console.log('NAVIGATION PROPS:', Object.entries(this.props.shop))
-    
     return (
       <>
         <nav className="nav">
@@ -87,13 +81,17 @@ export class Navigation extends Component {
                     if (loading) return "Loading...";
                     const { categories } = data;
                     return (
-                      <ul>{ categories.map((cat, index) => (
+                      <ul> 
+                        { categories.map((cat, index) => (
                         <Link key={index} to={cat.name}>
-                        <li  onClick={(e)=> this.props.categorySelect(cat.name)} >
-                          {(cat.name).toUpperCase()}
-                        </li>
-                      </Link>
-                      )) }
+                          <li  
+                          onClick={(e)=> this.props.categorySelect(cat.name)}
+                          title={cat.name}
+                          aria-label={cat.name}
+                          >
+                            {(cat.name).toUpperCase()}
+                          </li>
+                        </Link>))}
                     </ul>)
                   }}
                 </Query>
@@ -103,7 +101,10 @@ export class Navigation extends Component {
           <div className='nav__row'>
             <menu className='nav__menu--cart' >
               <ul>
-                <li onClick={this.dropDownMenu} >
+                <li 
+                onClick={this.dropDownMenu} 
+                title={this.props.currentCurrencyLabel}
+                >
                   <span>{this.props.currentCurrency}</span>
                   {this.state.toggleDropdown ? <DropDownCur /> : null}
                   </li>
@@ -134,6 +135,7 @@ export class Navigation extends Component {
 }
 export default connect(state => ({
   currentCurrency: getCurrentCurrency(state),
+  currentCurrencyLabel: getCurrentCurrencyLabel(state),
   cartItemNumber: getCartItemNumber(state),  
   ItemsByIds:getCart(state),
   shop: getShop(state)}), {refreshPage} )(Navigation)

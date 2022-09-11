@@ -5,6 +5,7 @@ const initialState = {
   // allIds: [],
   ItemsByIds: {},
   currentCurrency: '$',
+  currentCurrencyLabel: 'USD',
   // cart: [],
 };
 
@@ -52,16 +53,6 @@ export default function (state = initialState, action) {
           ...shop
         }
       }
-      //good old
-      // case ADD_TO_CART: {
-      //   const {  idKey, content } = action.payload;
-      //   return {
-      //     ...state,
-      //     cart : [...state.cart, {...content, idKey}],
-      //   }
-      // }
-
-      // good
       case CHANGE_CART_ITEM_PCS: {
         const { id , amount} = action.payload;
         return {
@@ -76,55 +67,75 @@ export default function (state = initialState, action) {
         };
       }
       
-      // // good
-      // case CHANGE_CART_ITEM_PCS: {
-      //   const { id } = action.payload;
-      //   return {
-      //     ...state,
-      //     ItemsByIds: {
-      //       ...state.ItemsByIds,
-      //       [id]: {
-      //         ...state.ItemsByIds[id],
-      //         count: state.ItemsByIds[id].count + 1
-      //       }
-      //     }
-      //   };
-      // }
-      
-
-
-      // //good
-      // case ADD_TO_CART_ITEM: {
-      //   const  {count } = action.payload;
-      //   return {
-      //     ...state,
-      //     counter: count
-      //   }
-      // }
-
-    // case TOGGLE_TODO: {
-    //   const { id } = action.payload;
-    //   return {
-    //     ...state,
-    //     byIds: {
-    //       ...state.byIds,
-    //       [id]: {
-    //         ...state.byIds[id],
-    //         completed: !state.byIds[id].completed
-    //       }
-    //     }
-    //   };
-    // }
-    case TOGGLE_CURRENCY: {
-      const { currency } = action.payload;
-      return {
-        ...state,
-        currentCurrency: currency
+      case TOGGLE_CURRENCY: {
+        const { currency , label} = action.payload;
+        return {
+          ...state,
+        currentCurrency: currency,
+        currentCurrencyLabel: label,
         
       };
+      //old
+      // case TOGGLE_CURRENCY: {
+      //   const { currency , label} = action.payload;
+      //   return {
+      //     ...state,
+      //   currentCurrency: currency
+        
+      // };
     }
     default:
       return state;
-    
-  }
+      
+    }
 }
+
+// // good
+// case CHANGE_CART_ITEM_PCS: {
+  //   const { id } = action.payload;
+  //   return {
+    //     ...state,
+    //     ItemsByIds: {
+      //       ...state.ItemsByIds,
+      //       [id]: {
+//         ...state.ItemsByIds[id],
+//         count: state.ItemsByIds[id].count + 1
+//       }
+//     }
+//   };
+// }
+
+//good old
+// case ADD_TO_CART: {
+//   const {  idKey, content } = action.payload;
+//   return {
+//     ...state,
+//     cart : [...state.cart, {...content, idKey}],
+//   }
+// }
+
+// good
+
+
+// //good
+// case ADD_TO_CART_ITEM: {
+  //   const  {count } = action.payload;
+  //   return {
+    //     ...state,
+    //     counter: count
+    //   }
+    // }
+    
+    // case TOGGLE_TODO: {
+      //   const { id } = action.payload;
+      //   return {
+        //     ...state,
+        //     byIds: {
+          //       ...state.byIds,
+          //       [id]: {
+            //         ...state.byIds[id],
+            //         completed: !state.byIds[id].completed
+            //       }
+            //     }
+            //   };
+            // }

@@ -32,8 +32,8 @@ export class DropDownCur extends Component {
   // }
 
   // to redux
-  currSignToStore = (payload) => {
-    this.props.toggleCurrency(payload)
+  currSignToStore = (currency, label) => {
+    this.props.toggleCurrency(currency, label)
   }
 
   render() {
@@ -43,7 +43,7 @@ export class DropDownCur extends Component {
           {({loading, data})=>{
             if (loading) return "Loading...";
             const { currencies } = data;
-            return (<>{currencies.map((curr,index) => <div key={index} onClick={()=> {  this.currSignToStore(curr.symbol)  }} className="dropDownCur-row"><span className='dropDownCur-row__cell'>{curr.symbol+ ' '+curr.label}</span></div>)}</>)
+            return (<>{currencies.map((curr,index) => <div key={index} onClick={()=> {this.currSignToStore(curr.symbol, curr.label) }} className="dropDownCur-row"><span className='dropDownCur-row__cell'>{curr.symbol+ ' '+curr.label}</span></div>)}</>)
           }}
         </Query>
       </div>

@@ -20,13 +20,16 @@ componentDidMount(){
 }
 
   render() {
-    // console.log('ProdDescWrapp: ', this.props )
     return (
       <>
-        <ThumbsBlock photos={this.props.product.gallery}
+        <ThumbsBlock  
+        name={this.props.product.name} 
+        photos={this.props.product.gallery} 
         selectPhoto={this.selectPhoto}/>
               
-        <PhotoBlock photo={ this.state.mainPhoto }/>
+        <PhotoBlock 
+        name={this.props.product.name} 
+        photo={ this.state.mainPhoto }/>
               
         <VariantBlock product={this.props.product}/>
       </>
@@ -35,4 +38,3 @@ componentDidMount(){
 }
 
 export default ProductDescWrapper
-//this.props.product.gallery[0]

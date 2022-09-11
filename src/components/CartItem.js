@@ -39,7 +39,7 @@ export class CartItem extends Component {
     this.setState((state,props)=> ({choices: {...arg}  }))
   }
 
-  toCartItemAdd = ( itemStoreId , prev) => {
+  toCartItemAdd = ( itemStoreId ) => {
     console.log('itemStoreId', )
     const amount = true
     this.props.addToCartItem(itemStoreId, amount)
