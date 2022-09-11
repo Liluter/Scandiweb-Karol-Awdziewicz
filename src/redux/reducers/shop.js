@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import {  TOGGLE_CURRENCY,ADD_TO_CART, REMOVE_FROME_CART, CHANGE_CART_ITEM_PCS} from "../actionTypes";
+import {  TOGGLE_CURRENCY,ADD_TO_CART, REMOVE_FROME_CART,REFRESH, CHANGE_CART_ITEM_PCS} from "../actionTypes";
 
 const initialState = {
   // allIds: [],
@@ -41,6 +41,12 @@ export default function (state = initialState, action) {
       }
 
       case  REMOVE_FROME_CART: {
+        const {shop} = action.payload;
+        return {
+          ...shop
+        }
+      }
+      case  REFRESH: {
         const {shop} = action.payload;
         return {
           ...shop

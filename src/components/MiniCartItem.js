@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { currencyNumber } from '../utils/currencyNumber'
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
 import { addToCartItem} from '../redux/action'
 
+import { currencyNumber } from '../utils/currencyNumber'
 import {ReactComponent as Plus} from '../assets/Plus.svg'
 import {ReactComponent as Minus} from '../assets/Minus.svg'
 import VariantTypesMiniCart from './VariantTypesMiniCart'
-// import VariantTypes from './VariantTypes'
 import '../styles/MiniCartItem.scss'
-
-
 
 export class MiniCartItem extends Component {
   constructor(props) {
@@ -64,7 +61,7 @@ export class MiniCartItem extends Component {
   render() {
     console.log(`MiniCartItem ${this.props.item.product.name} PROPS:`,this.props)
 
-    let {brand, name, prices, gallery, idKey} = this.props.item.product
+    let {brand, name, prices, gallery} = this.props.item.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol + prices[currencyNumber(this.props.currentCurrency)].amount
     return (
       <div className='miniCartItem'> 
@@ -81,9 +78,21 @@ export class MiniCartItem extends Component {
           />
         </div>
         <div className='miniCartItem__counter'>
-          <button className='miniCartItem__counter--button' onClick={()=>this.toCartItemAdd( this.props.itemStoreId, this.props.item.count)}><Plus/></button>
-          <div className='miniCartItem__counter--actualCount'>{this.props.item.count}</div>
-          <button className='miniCartItem__counter--button' onClick={()=>this.toCartItemSub( this.props.itemStoreId, this.props.item.count)}><Minus/></button>
+          <button 
+          className='miniCartItem__counter--button' 
+          onClick={()=>this.toCartItemAdd( this.props.itemStoreId, this.props.item.count)}>
+            <Plus/>
+          </button>
+          <div 
+          className='miniCartItem__counter--actualCount'>
+            {this.props.item.count}
+          </div>
+          <button 
+          className={`miniCartItem__counter--button ${this.props.item.count === 1 ? 'toDelete' : ''}`} 
+          onClick={()=>this.toCartItemSub( this.props.itemStoreId, this.props.item.count)}>
+            <Minus className='minus1'/>
+            {this.props.item.count === 1 ? <Minus className='minus2' />: null}
+          </button>
         
         </div>
         <div className='miniCartItem__photo'>

@@ -5,14 +5,10 @@ import { getCurrentCurrency } from '../redux/selectors'
 import { addToCartItem} from '../redux/action'
 import { Link } from 'react-router-dom'
 import {ReactComponent as Plus} from '../assets/PlusBig.svg'
-// import {ReactComponent as Plus} from '../assets/Plus.svg'
 import {ReactComponent as Minus} from '../assets/MinusBig.svg'
 import {ReactComponent as CaretLeft} from '../assets/CaretLeft.svg'
 import {ReactComponent as CaretRight} from '../assets/CaretRight.svg'
-// import {ReactComponent as Minus} from '../assets/Minus.svg'
-// import VariantTypesMiniCart from './VariantTypesMiniCart'
 import VariantTypesCart from './VariantTypesCart'
-// import VariantTypes from './VariantTypes'
 import '../styles/CartItem.scss'
 
 
@@ -41,11 +37,8 @@ export class CartItem extends Component {
 
   toggleAttribute = (arg) =>{
     this.setState((state,props)=> ({choices: {...arg}  }))
-    // console.log('toggleAttribute activated temporarrySet :' , arg)
   }
 
-
-  // to redux
   toCartItemAdd = ( itemStoreId , prev) => {
     console.log('itemStoreId', )
     const amount = true
@@ -60,9 +53,6 @@ export class CartItem extends Component {
         this.props.addToCartItem(itemStoreId, amount)
       }
   }
-  
-  
-
 
   render() {
     console.log('Propsy',this.props)
@@ -83,26 +73,39 @@ export class CartItem extends Component {
             item={this.props.item}
             />
           </div>
-          <div className='CartItem__counter'>
-            <button className='CartItem__counter--button' onClick={()=>this.toCartItemAdd( this.props.itemStoreId, this.props.item.count)}><Plus/></button>
-            <div className='CartItem__counter--actualCount'>{this.props.item.count}</div>
-            <button className='CartItem__counter--button' onClick={()=>this.toCartItemSub( this.props.itemStoreId, this.props.item.count)}><Minus/></button>
-          
-          </div>
-          <div className='CartItem__photo'>
-            <Link to={`/${category}/${id}`}>   
-              <img 
-              className='CartItem__photo--image'
-              src={ gallery[this.state.counter] || '/logo192.png' }
-              alt='product_photo'
-              onClick={ this.switchImage}
-              />
-            </Link>
-            <div className='CartItem__photo--buttonSet'>
-              <button className='switch' onClick={ this.switchImageDown}><CaretLeft/></button>
-              <button className='switch' onClick={ this.switchImageUp}><CaretRight/></button>
-            </div>
-          </div>
+            <>
+              <div className='CartItem__counter'>
+                <button 
+                className='CartItem__counter--button' 
+                onClick={()=>this.toCartItemAdd( this.props.itemStoreId, this.props.item.count)}>
+                  <Plus/>
+                </button>
+                <div className='CartItem__counter--actualCount'>{this.props.item.count}</div>
+                <button 
+                // `miniCartItem__counter--button ${this.props.item.count === 1 ? 'toDelete' : ''}`
+                className={`CartItem__counter--button  ${this.props.item.count === 1 ? 'toDelete' : '' }`}
+                onClick={()=>this.toCartItemSub( this.props.itemStoreId, this.props.item.count)}>
+                  <Minus className='minus1'/>
+                  {this.props.item.count === 1 ? <Minus className='minus2' />: null}
+                  {/* { this.props.item.count == 1 ? <XsignBig/> : <Minus/>} */}
+                </button>
+              
+              </div>
+              <div className='CartItem__photo'>
+                <Link to={`/${category}/${id}`}>   
+                  <img 
+                  className='CartItem__photo--image'
+                  src={ gallery[this.state.counter] || '/logo192.png' }
+                  alt='product_photo'
+                  onClick={ this.switchImage}
+                  />
+                </Link>
+                <div className='CartItem__photo--buttonSet'>
+                  <button className='switch' onClick={ this.switchImageDown}><CaretLeft/></button>
+                  <button className='switch' onClick={ this.switchImageUp}><CaretRight/></button>
+                </div>
+              </div>
+            </>
         </div>
         <hr className='cart__hLine'></hr>
       </>

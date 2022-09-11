@@ -7,7 +7,7 @@
   font-style: normal;
   color: #1D1F22;
   margin-bottom: 24px;
-  
+  flex-wrap: wrap;
   cursor: default;
   &__variant{
     width: 292px;
@@ -45,7 +45,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     flex: 0 0 auto;
     &--button{
       width:45px;
@@ -65,6 +64,24 @@
       }
       &:hover :nth-child(2){
         stroke: #ffffff;
+      }
+      &.toDelete{
+        display: flex;
+        position: relative;
+        & .minus1 {
+          position:absolute;
+        }
+        & .minus2 {
+          position:absolute;
+        }
+        &:hover .minus1{
+          position: absolute;
+          transform: rotateZ(45deg);
+        }
+        &:hover .minus2{
+          position: absolute;
+          transform: rotateZ(-45deg);
+        }
       }
     }
     &--actualCount{
@@ -116,87 +133,12 @@
   &:last-child{
     margin-bottom: 0;
   }
-  // &--price{
-  //   display:flex;
-  //   flex-direction: column;
-  //   margin-bottom: 20px;
-  //   gap:8px;
-  //   .price__label{
-  //     font-family: 'Roboto Condensed';
-  //     font-style: normal;
-  //     font-weight: 700;
-  //     font-size: 18px;
-  //     line-height: 18px;
-      
-  //   }
-  //   .price__amount{
-  //     height: 46px;
-  //     display: flex;
-  //     align-items: center;
-  //     font-family: 'Raleway';
-  //     font-style: normal;
-  //     font-weight: 700;
-  //     font-size: 24px;
-  //     line-height: 18px;
-  //   }
-  // }
-  // &--button{
-  //   width: 292px;
-  //   height: 52px;
-  //   background-color: #5ECE7B;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   font-family: 'Raleway';
-  //   font-style: normal;
-  //   font-weight: 600;
-  //   font-size: 16px;
-  //   line-height: 120%;
-  //   color: #ffffff;
-  //   border: none;
-  //   margin-bottom: 40px;
-  //     &.notInStock{
-  //     background-color: #D3D2D5;
-  //     &:hover{
-  //       background-color: #aaaaaa;
-  //     }
-  //   }
-  //   &:hover{
-  //     background-color: #2fcd5f;
-  //   }
-  // }
-  // &--footer{
-    
-  //   font-family: 'Roboto';
-  //   font-style: normal;
-  //   font-weight: 400;
-  //   font-size: 16px;
-  //   line-height: 159.96%;
-  //   .description{
-  //     list-style-position: inside;
-  //     color: #1D1F22;
-  //     height: 300px;
-  //     position: relative;
-  //     overflow-y: hidden;
-  //     scrollbar-width: thin;
-  //     scrollbar-color: #5ECE7B #f1f1f1;
-  //     &:hover{
-  //       overflow-y: auto;
-  //       // box-shadow: 0 0 20px #d9d9d9;
-  //     }
-  //     &:hover::-webkit-scrollbar{
-  //       width: 6px;
-  //     }
-  //     &:hover::-webkit-scrollbar-track{
-  //       background: #f1f1f1;
-  //     }
-  //     &:hover::-webkit-scrollbar-thumb{
-  //       width: 6px;
-  //       background: #5ECE7B;
-  //       border-radius: 3px;
-  //       box-shadow: inset 0 0 1px rgb(0, 0, 0); 
-  //     }
-  //   }
-  // }
-  
+
 }
+// @media screen and ( min-width: 678px) {
+//   .CartItem{
+//   // width: 1440px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   }
+// }

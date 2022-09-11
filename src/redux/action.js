@@ -1,4 +1,4 @@
-import { TOGGLE_TODO, REMOVE_FROME_CART, TOGGLE_CURRENCY , SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
+import { TOGGLE_TODO, REMOVE_FROME_CART, TOGGLE_CURRENCY ,REFRESH, SET_FILTER, ADD_TO_CART, CHANGE_CART_ITEM_PCS} from "./actionTypes";
 // import { nanoid } from '@reduxjs/toolkit'
 // let nextTodoId = 0
 let nextCartItem = 0
@@ -37,6 +37,13 @@ export const removeFromCart = (shop) => ({
     shop
   }
 })
+export const refreshPage = (shop) => ({
+  type: REFRESH,
+  payload: {
+    shop
+  }
+})
+
 //good
 // export const addToCartItem = (count) => ({
 //   type: ADD_TO_CART_ITEM,

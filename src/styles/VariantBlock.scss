@@ -9,6 +9,21 @@
   flex-shrink: 0;
   font-family: 'Raleway';
   font-style: normal;
+  & .alert{
+    background-color: #2fcd5f;
+    width: 292px;
+    height: 52px;
+    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    // top:240px;
+  }
   &--header{
     margin-bottom: 16px;;
     font-weight: 600;

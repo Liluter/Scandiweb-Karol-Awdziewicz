@@ -2,8 +2,6 @@
   display:flex;
   flex-direction: column;
   margin-bottom: 0;
-  //scroll
-
   .variant__swatch--label{
     font-family: 'Roboto Condensed';
     font-style: normal;
@@ -41,13 +39,7 @@
         box-shadow: 0px 0px 0px 2px  #5ECE7B;
         outline: 1px solid #ffffff;
       }
-      &:hover{
-        background-color: #9d9d9d;
-        outline: 1px solid #1D1F22;
-        color: #FFFFFF;
-        box-shadow: 0px 0px 0px 3px  #5ECE7B;
-        outline: 1px solid #ffffff;
-      }
+    
     }
   }
 }
