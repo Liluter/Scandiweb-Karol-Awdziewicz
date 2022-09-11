@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route, Switch} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import './styles/App.scss';
 import Category from './pages/Category';
 import Navigation from './components/Navigation';
@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state={category: 'all',
                 currentCurency: "$",
                 toggleFog: false,
-                miniCart: false}; // to remove redux will take care
+                miniCart: false}; 
 
     this.categorySelect = this.categorySelect.bind(this)
     this.toggleFog = this.toggleFog.bind(this)

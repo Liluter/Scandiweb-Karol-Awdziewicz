@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import MiniCartItem from './MiniCartItem'
 export class MiniCartItems extends Component {
   render() {
-    // console.log('MiniCartItems push to map', Object.entries(this.props.itemsByIds))
     return (
     Object.entries(this.props.itemsByIds)
-      .map((item, index, ItemsByIds)=> 
+      .map((item, index)=> 
         <MiniCartItem 
         key={index} 
         itemStoreId={item[0]} 
@@ -16,7 +15,4 @@ export class MiniCartItems extends Component {
     )
   }
 }
-//["1",{...}]
-//["2",{...}]
-//["3",{...}]
 export default MiniCartItems

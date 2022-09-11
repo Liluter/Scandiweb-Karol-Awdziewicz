@@ -23,7 +23,6 @@ export class Cart extends Component {
   }
 
   removeItem(payload){
-    // STOTRE DISPATCH
     const ShopFilteredArr =  Object.entries(this.props.shop.ItemsByIds).filter((e)=> (e[0]!== payload))
     const newShop = { 
       currentCurrency: this.props.shop.currentCurrency ,

@@ -3,7 +3,6 @@ import ThumbsBlock from './ThumbsBlock'
 import PhotoBlock from './PhotoBlock'
 import VariantBlock from './VariantBlock'
 
-
 export class ProductDescWrapper extends Component {
   constructor(props){
     super(props)

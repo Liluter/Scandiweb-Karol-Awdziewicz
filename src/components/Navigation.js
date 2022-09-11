@@ -5,13 +5,12 @@ import {Query} from '@apollo/client/react/components'
 import { getCurrentCurrency, getCartItemNumber, getCart , getShop, getCurrentCurrencyLabel} from '../redux/selectors'
 import { refreshPage } from '../redux/action'
 import { connect } from 'react-redux';  
-import {ReactComponent as BrandLogo} from '../assets/brandLogo.svg'
+import {ReactComponent as BrandLogo} from '../assets/BrandLogo.svg'
 import {ReactComponent as CartIcon} from '../assets/CartIcon.svg'
-import {ReactComponent as Caret} from '../assets/caretUp.svg'
+import {ReactComponent as Caret} from '../assets/CaretUp.svg'
 import DropDownCur from './DropDownCur';
 import MiniCart from './MiniCart'
 import '../styles/Navigation.scss'
-
 
 const CATEGORIES=gql`
 query TakeCategory {
@@ -41,6 +40,7 @@ export class Navigation extends Component {
       this.storage()
     }
   }
+
   componentDidUpdate(prevProps){
     if (this.props.cartItemNumber !== prevProps.cartItemNumber) {
       this.setState((state)=>({showNumber: !this.state.showNumber }))
@@ -51,7 +51,6 @@ export class Navigation extends Component {
 
   storage(){
     const Shop = sessionStorage.getItem('Store');
-    // console.log('Shop in session storage',Shop)
     this.props.refreshPage(JSON.parse(Shop))
   }
   

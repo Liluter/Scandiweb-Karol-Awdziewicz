@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCards from '../components/ProductCards'
-import '../styles/Category.scss'
 import {ReactComponent as Spinner} from '../assets/Spinner.svg'
+import '../styles/Category.scss'
 
 class Category extends React.Component {
   constructor(props){
@@ -35,11 +35,10 @@ class Category extends React.Component {
     <main key={this.props.category} title={this.props.category} className='category background'>
       <header className='category__title'><span>{this.props.category[0].toUpperCase() + this.props.category.slice(1)}</span></header>
       <ProductCards 
-      key={this.props.category}
-      category={this.props.category}
-      handleSpinner={this.handleSpinner}
-      counter={this.state.counter}
-      />
+        key={this.props.category}
+        category={this.props.category}
+        handleSpinner={this.handleSpinner}
+        counter={this.state.counter}/>
       <div className='spinnerWrapper'>
         <Spinner className={`spinnerWrapper--spinner ${ this.state.spinner ? '' : 'hide'  }`} /> 
       </div> 

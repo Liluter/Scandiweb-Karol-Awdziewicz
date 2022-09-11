@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {ReactComponent as ToCartBtn} from '../assets/cartIcon2.svg'
+import {ReactComponent as ToCartBtn} from '../assets/CartIcon2.svg'
 import {currencyNumber} from '../utils/currencyNumber'
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'

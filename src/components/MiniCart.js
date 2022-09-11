@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import '../styles/MiniCart.scss'
 import { connect } from 'react-redux'
-import { getCart, getCartItemNumber, getShop, getTotalAmount, getCurrentCurrency, getCurrentCurrencyLabel } from '../redux/selectors'
-import MiniCartItems from './MiniCartItems'
 import { Link } from 'react-router-dom'
 import { removeFromCart } from '../redux/action'
+import { getCart, 
+  getCartItemNumber, 
+  getShop, 
+  getTotalAmount, 
+  getCurrentCurrency, 
+  getCurrentCurrencyLabel } from '../redux/selectors'
+import MiniCartItems from './MiniCartItems'
+import '../styles/MiniCart.scss'
 
 export class MiniCart extends Component {
   constructor(props){
@@ -18,43 +23,37 @@ export class MiniCart extends Component {
     this.miniCartMenu()
   }
 
-  // romoving item...
   removeItem(payload){
-    // STOTRE DISPATCH
     const ShopFilteredArr =  Object.entries(this.props.shop.ItemsByIds).filter((e)=> (e[0]!== payload))
-    const newShop = { currentCurrency: this.props.shop.currentCurrency ,  currentCurrencyLabel: this.props.shop.currentCurrencyLabel ,ItemsByIds: {...Object.fromEntries( ShopFilteredArr )} }
-    console.log( 'Remove item with Id: ', payload)
-    console.log( 'Remove item Old Shop with Id: ', this.props.shop)
-    console.log( 'Remove item from Shop ShopFiltered: ',  ShopFilteredArr )
-    console.log( 'Remove item New Shop Filtered: ', newShop)
-    // feed fresh store without deleted id as payload
-    this.props.removeFromCart(newShop)  //dispatch ok 
+    const newShop = { currentCurrency: this.props.shop.currentCurrency, 
+      currentCurrencyLabel: this.props.shop.currentCurrencyLabel, 
+      ItemsByIds: {...Object.fromEntries( ShopFilteredArr )} }
+    this.props.removeFromCart(newShop)  
   }
-
-
-  
 
   render() {
     let cartItemNumber = this.props.cartItemNumber;
     return (
       <>
         <div className='miniCart'>
-          <div className='miniCart__header'> <b className='miniCart__header--bold'>My Bag</b>, {cartItemNumber ?? 0} { cartItemNumber === 1 ? 'item' : 'items'}</div>
-          <div className='miniCart__content'> <MiniCartItems itemsByIds={this.props.itemsByIds} removeItem={this.removeItem} /></div>
-
+          <div className='miniCart__header'>
+            <b className='miniCart__header--bold'>My Bag</b>, {cartItemNumber ?? 0} { cartItemNumber === 1 ? 'item' : 'items'}
+          </div>
+          <div className='miniCart__content'>
+            <MiniCartItems itemsByIds={this.props.itemsByIds} removeItem={this.removeItem} />
+          </div>
           <div className='miniCart__total'>
             <b className='miniCart__total--text'>Total</b>
             <b className='miniCart__total--amount'>{this.props.currentCurrency}{this.props.getTotalAmount}</b>
           </div>
-          
           <div className='miniCart__footer'>
-          <Link to={'cart'} >
-            <button 
-          onClick={()=> console.log(this)}
-              className='miniCart__footer--buttonBag'>
-              VIEW BAG
-            </button>
-          </Link>
+            <Link to={'cart'} >
+              <button 
+                onClick={()=> console.log(this)}
+                className='miniCart__footer--buttonBag'>
+                VIEW BAG
+              </button>
+            </Link>
           <button className='miniCart__footer--buttonCheckout'>CHECK OUT</button>
           </div>
         </div>
@@ -70,8 +69,3 @@ export default connect(state => ({
   currentCurrency: getCurrentCurrency(state), 
   currentCurrencyLabel: getCurrentCurrencyLabel(state), 
   shop: getShop(state)}) , {removeFromCart})(MiniCart)
-  
-  // cartItemNumber: (getCartItemNumber(state) ), 
-  // getTotalAmount:getTotalAmount(state), 
-// connect(null, { toggleCurrency})(DropDownCur)
-//state => ({currentCurrency: getCurrentCurrency(state)})

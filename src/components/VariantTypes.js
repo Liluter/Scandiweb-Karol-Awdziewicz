@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import TypeText from './TypeText'
 import TypeSwatch from './TypeSwatch'
 
-
 export class VariantTypes extends Component {
   constructor(params) {
     super(params)
@@ -10,7 +9,6 @@ export class VariantTypes extends Component {
     this.selectType = this.selectType.bind(this)
   }
   selectType(type, attr,index){
-    // console.log("switch: ",attr)
     switch (type) {
       case 'swatch': 
         return <TypeSwatch 
@@ -30,9 +28,6 @@ export class VariantTypes extends Component {
   }
 
   render() {
-    // let attributes = this.props.attributes
-    // console.log('VariantType',this.props)
-    // console.log("Let attributes",attributes)
     return (
         <div 
         key={this.props.productId}
@@ -45,5 +40,3 @@ export class VariantTypes extends Component {
 }
 
 export default VariantTypes
-
-//attributes.filter((e) => e.name === "Size" ).length > 0 ? 'Has Size attribute'  : "Hasn't Size attribute")

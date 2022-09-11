@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
 import { addToCartItem} from '../redux/action'
-
 import { currencyNumber } from '../utils/currencyNumber'
 import {ReactComponent as Plus} from '../assets/Plus.svg'
 import {ReactComponent as Minus} from '../assets/Minus.svg'
@@ -25,11 +24,8 @@ export class MiniCartItem extends Component {
 
   toggleAttribute = (arg) =>{
     this.setState((state,props)=> ({choices: {...arg}  }))
-    // console.log('toggleAttribute activated temporarrySet :' , arg)
   }
 
-
-  // to redux
   toCartItemAdd = ( itemStoreId , prev) => {
     console.log('itemStoreId', )
     const amount = true
@@ -43,21 +39,7 @@ export class MiniCartItem extends Component {
         this.props.addToCartItem(itemStoreId, amount)
       }
   }
-  //old
-  // toCartItemAdd = (num, itemIndex) => {
-  //   this.props.addToCartItem(num + 1)
-  //   console.log('toCartItem payload', num +1 , 'itemIndex :', itemIndex )
-  // }
-  // toCartItemSub = (num) => {
-  //   if (num == 0) {
-  //     console.log('toCartItem payload', null )
-  //   } else {
-  //     this.props.addToCartItem(num - 1)
-  //     console.log('toCartItem payload', num - 1 )
-  //   }
-  // }
-  // /onClick={()=> {  this.toCart({...this.state, ...this.props.product})
-
+  
   render() {
     console.log(`MiniCartItem ${this.props.item.product.name} PROPS:`,this.props)
 
@@ -71,7 +53,6 @@ export class MiniCartItem extends Component {
           <h2 className='miniCartItem__variant--price'>{price}</h2>
           <VariantTypesMiniCart 
           attributes={this.props.item.product.attributes}
-          // idKey={idKey}
           toggleAttribute={this.toggleAttribute}
           itemStoreId= {this.props.itemStoreId}
           item={this.props.item}
@@ -109,4 +90,3 @@ export class MiniCartItem extends Component {
 }
 
 export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) , {addToCartItem} )(MiniCartItem)
-//connect(state => ({currentCurrency: getCurrentCurrency(state)}), {addToCart} )(VariantBlock)

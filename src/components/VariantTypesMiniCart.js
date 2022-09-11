@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import TypeText from './TypeText'
-// import TypeSwatch from './TypeSwatch'
 import TypeTextMiniCart from './TypeTextMiniCart'
 import TypeSwatchMiniCart from './TypeSwatchMiniCart'
 
@@ -34,7 +32,6 @@ export class VariantTypesMiniCart extends Component {
 
   render() {
     let attributes = this.props.attributes
-    // console.log('VariantTypeMiniCart props',this.props)
     return (
         <>
         {attributes.map((attr, index)=> this.selectType(attr.type, attr, index))}

@@ -1,6 +1,5 @@
 import React, { Component} from 'react'
 import '../styles/TypeText.scss'
-// import TypeTextOptions from './TypeTextOptions'
 
 export class Typetext extends  Component {
   constructor(props){
@@ -11,10 +10,6 @@ export class Typetext extends  Component {
     this.selectAttribute= this.selectAttribute.bind(this)
     this.selectName= this.selectName.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    // this.handleSelect = this.handleSelect.bind(this)
-    
-    // this.selectSize = this.selectSize.bind(this)
-      //this.selectName(this.props.attributes.items[0].displayValue)
     }
     
     
@@ -35,18 +30,9 @@ export class Typetext extends  Component {
       default:
     }
   }
-  
-  // handleSelect(){
-  //   this.props.toggleAttribute( this.state.selected )
-  // }
 
   handleClick(item, name){
-    
-    // console.log('handle load TEXT',item)
-    this.selectAttribute(this.selectName(item) , item); // selected:{Capacity:1}
-    
-    
-    
+    this.selectAttribute(this.selectName(item) , item);
     this.props.toggleAttribute( this.selectName(item) )
   }
   
@@ -56,11 +42,11 @@ export class Typetext extends  Component {
       <div   className='productDesc__block--variantSize'>
         <div  className='variantSize__label'>{name.toUpperCase()}:</div>
         <div   className='variantSize__options' >
-          {items.map((item,index,arr)=>
-          (<button key={this.props.productId+index}
+          {items.map( (item,index)=>
+          <button key={this.props.productId+index}
             onClick={() => {this.handleClick(index, name) }}
             className={`variantSize__options--Btn ${this.state.number === index ? 'selected' : ''}`}>{`${items[index].displayValue}`}
-          </button>) )}
+          </button> )}
   
         </div>
       </div>

@@ -11,8 +11,6 @@ import {ReactComponent as CaretRight} from '../assets/CaretRight.svg'
 import VariantTypesCart from './VariantTypesCart'
 import '../styles/CartItem.scss'
 
-
-
 export class CartItem extends Component {
   constructor(props) {
     super(props)
@@ -26,13 +24,16 @@ export class CartItem extends Component {
   }
 
   switchImage(){
-    this.setState((state,props)=>( (state.counter === props.item.product.gallery.length -1) ? {counter: 0 }: {counter: state.counter + 1} ))
+    this.setState((state,props)=>
+    ( (state.counter === props.item.product.gallery.length -1) ? {counter: 0 }: {counter: state.counter + 1} ))
   }
   switchImageUp(){
-    this.setState((state,props)=>( (state.counter === props.item.product.gallery.length -1) ? {counter: 0 }: {counter: state.counter + 1} ))
+    this.setState((state,props)=>
+    ( (state.counter === props.item.product.gallery.length -1) ? {counter: 0 }: {counter: state.counter + 1} ))
   }
   switchImageDown(){
-    this.setState((state,props)=>( (state.counter === 0) ? {counter: props.item.product.gallery.length -1 }: {counter: state.counter - 1} ))
+    this.setState((state,props)=>
+    ( (state.counter === 0) ? {counter: props.item.product.gallery.length -1 }: {counter: state.counter - 1} ))
   }
 
   toggleAttribute = (arg) =>{
@@ -48,7 +49,6 @@ export class CartItem extends Component {
     const amount = false
         if (prev === 1) {
           this.props.removeItem(itemStoreId)
-          // console.log('Propsy, ', this.props)
       } else {
         this.props.addToCartItem(itemStoreId, amount)
       }
@@ -67,7 +67,6 @@ export class CartItem extends Component {
             <h2 className='CartItem__variant--price'>{price}</h2>
             <VariantTypesCart 
             attributes={this.props.item.product.attributes}
-            // idKey={idKey}
             toggleAttribute={this.toggleAttribute}
             itemStoreId= {this.props.itemStoreId}
             item={this.props.item}
@@ -82,14 +81,11 @@ export class CartItem extends Component {
                 </button>
                 <div className='CartItem__counter--actualCount'>{this.props.item.count}</div>
                 <button 
-                // `miniCartItem__counter--button ${this.props.item.count === 1 ? 'toDelete' : ''}`
                 className={`CartItem__counter--button  ${this.props.item.count === 1 ? 'toDelete' : '' }`}
                 onClick={()=>this.toCartItemSub( this.props.itemStoreId, this.props.item.count)}>
                   <Minus className='minus1'/>
                   {this.props.item.count === 1 ? <Minus className='minus2' />: null}
-                  {/* { this.props.item.count == 1 ? <XsignBig/> : <Minus/>} */}
                 </button>
-              
               </div>
               <div className='CartItem__photo'>
                 <Link to={`/${category}/${id}`}>   
@@ -114,6 +110,3 @@ export class CartItem extends Component {
 }
 
 export default connect(state => ({currentCurrency: getCurrentCurrency(state)}) , {addToCartItem} )(CartItem)
-//connect(state => ({currentCurrency: getCurrentCurrency(state)}), {addToCart} )(VariantBlock)
-
-// <Link to={`/${this.props.product.category}/${this.props.product.id}`}> <div className='productCard__Btn--pushToCart'><ToCartBtn /></div></Link>
