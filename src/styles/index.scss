@@ -1,20 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
-*,*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import './base/typography.scss';
+@import './utils/variables.scss';
+@import './utils/mixins.scss';
 
-body {
-  display:flex;
-  justify-content: center;
-  margin: 0;
-  font-family: 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  caret-color: transparent;
-}
+@import './pages/App.scss';
+@import './pages/Category.scss';
+@import './pages/ProductDescription.scss';
+@import './pages/Cart.scss';
+@import './components/Navigation.scss';
+@import './components/DropDownCur.scss';
+@import './components/MiniCart.scss';
+@import './components/MiniCartItem.scss';
+@import './components/CartItem.scss';
+@import './components/ProductCard.scss';
+@import './components/ProductCards.scss';
+@import './components/PhotoBlock.scss';
+@import './components/ThumbsBlock.scss';
+@import './components/VariantBlock.scss';
+@import './components/TypeSwatch.scss';
+@import './components/TypeSwatchCart.scss';
+@import './components/TypeSwatchMiniCart.scss';
+@import './components/TypeText.scss';
+@import './components/TypeTextCart.scss';
+@import './components/TypeTextMiniCart.scss';

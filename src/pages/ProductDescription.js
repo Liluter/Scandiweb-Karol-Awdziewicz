@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
-
-import '../styles/ProductDescription.scss'
-
-// import '../styles/ProductDescription.scss'
 import { withParams } from '../utils/hocs'
-
 import ProductDescWrapper from '../components/ProductDescWrapper'
 
 
@@ -42,15 +37,10 @@ query GetProduct($productId: String!) {
 
 `
 
-
-
 export class ProductDescription extends Component {
   
   render() {
-
     let {  productId} = this.props.params;
-    // console.log('ProductDescription props', this.props)
-    // console.log('ProductDescription state', this.state)
     return (
         <div className='productDesc' >
           <Query  
@@ -58,7 +48,6 @@ export class ProductDescription extends Component {
             {({loading, data, refetch, fetchMore})=>{
               if (loading) return "Loading...";
               const { product} = data;
-              // console.log('query prod',product)
               refetch()
               return (
               <ProductDescWrapper  productId={productId} product={product}/>

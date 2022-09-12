@@ -9,7 +9,7 @@ import {ReactComponent as Minus} from '../assets/MinusBig.svg'
 import {ReactComponent as CaretLeft} from '../assets/CaretLeft.svg'
 import {ReactComponent as CaretRight} from '../assets/CaretRight.svg'
 import VariantTypesCart from './VariantTypesCart'
-import '../styles/CartItem.scss'
+
 
 export class CartItem extends Component {
   constructor(props) {

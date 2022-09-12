@@ -9,7 +9,7 @@ import { getCart,
 import CartItems from '../components/CartItems'
 import { getShop } from '../redux/selectors'
 import { removeFromCart } from '../redux/action'
-import '../styles/Cart.scss'
+
 
 export class Cart extends Component {
   constructor(props){

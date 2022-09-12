@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/ThumbsBlock.scss'
+
 
 export class ThumbsBlock extends Component {
 

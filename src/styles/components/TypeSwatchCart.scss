@@ -1,0 +1,36 @@
+.CartItem__variant--contentSwatch{
+  @include display-theme(column, unset, unset);
+  margin-bottom: 0;
+  .variant__swatch--label{
+    @include font-theme($forth-font,$primary-style,700,18px,18px);
+    color:$primary-dark-color;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+  .variant__options{
+    display:flex;
+    gap: 10px;
+    flex-wrap:wrap;
+    flex-shrink: 0;
+    width: 292px;
+    &--Btn{
+      border: none;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+      background-color: #D3D2D5;
+      border-radius: 0;
+      box-shadow: 0 0 4px rgb(168, 172, 176);
+      @include font-theme($third-font,$primary-style,$primary-weight,16px,18px);
+      @include transition(all 200ms ease);
+      &.selected{
+        background-color: $primary-dark-color;
+        outline: 1px solid $primary-dark-color;
+        color: $background-color;
+        box-shadow: 0px 0px 0px 2px  $button-primary-color;
+        outline: 1px solid $background-color;
+      }
+    
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import React, { Component} from 'react'
-import '../styles/TypeText.scss'
 
 export class Typetext extends  Component {
   constructor(props){

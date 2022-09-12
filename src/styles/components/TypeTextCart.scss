@@ -1,0 +1,32 @@
+.CartItem__variant--contentText{
+  @include display-theme(column,unset,unset);
+  flex-wrap: wrap;
+  .variant__label{
+    margin-top: 8px;
+    margin-bottom: 7px;
+    height: 16px;
+    @include font-theme($forth-font,$primary-style,700,18px,18px);
+  }
+  .variant__options{
+    display:flex;
+    gap: 8px;
+    flex-wrap:wrap;
+    flex-shrink: 0;
+    width: 292px;
+    &--Btn{
+      width: 63px;
+      height: 45px;
+      margin-bottom: 8px;
+      background-color: $background-color;
+      border: 1px solid $primary-dark-color;
+      border-radius: 0;
+      @include font-theme($third-font,$primary-style,$primary-weight,$primary-size,18px);
+      @include transition (all 200ms ease);
+      &.selected{
+        background-color: $primary-dark-color;
+        color: $background-color;
+      }
+    }
+  }
+}
+

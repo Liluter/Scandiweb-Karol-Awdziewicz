@@ -2,29 +2,27 @@
   position: relative;
   overflow-y: hidden;
   scrollbar-width: thin;
-  scrollbar-color: #5ECE7B #f1f1f1;
+  scrollbar-color: $button-primary-color $scroll-secondary;
   
   width: 99px;
   height: 511px;
   margin: 49px 20px 0 0;
-  display: flex;
-  flex-direction: column;
+  @include display-theme(column,unset,unset);
   gap: 40px;
   padding-right: 0; 
   flex-shrink: 0;
   &:hover{
     overflow-y: scroll;
-    // box-shadow: 0 0 20px #d9d9d9;
   }
   &:hover::-webkit-scrollbar{
     width: 6px;
   }
   &:hover::-webkit-scrollbar-track{
-    background: #f1f1f1;
+    background: $scroll-secondary;
   }
   &:hover::-webkit-scrollbar-thumb{
     width: 6px;
-    background: #5ECE7B;
+    background: $button-primary-color;
     border-radius: 3px;
     box-shadow: inset 0 0 1px rgb(0, 0, 0); 
   }

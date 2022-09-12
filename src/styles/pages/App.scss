@@ -1,3 +1,19 @@
+
+*,*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include display-theme(row, center, flex-start);
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  caret-color: transparent;
+}
+
 .container {
   width:100vw;
   position: relative;

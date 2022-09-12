@@ -3,7 +3,7 @@ import ProductCard from './ProductCard'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
 import {graphql } from '@apollo/client/react/hoc'
-import '../styles/ProductCards.scss'
+
 
 const GET_PRODUCTS = gql`
 query GetProducts($input: CategoryInput) {

@@ -1,0 +1,33 @@
+@mixin font-theme($font, $style, $weight, $size, $line){
+  font-family: $font;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+}
+
+@mixin display-theme($dir, $just, $alig ){
+  display:flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $alig;
+}
+
+@mixin transition($transitions) {
+  -webkit-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin transform($transformation) {
+  -webkit-transform: $transformation;
+  -ms-transform: $transformation;
+  -o-transform: $transformation;
+  transform: $transformation;
+}
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -ms-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}

@@ -10,7 +10,7 @@ import {ReactComponent as CartIcon} from '../assets/CartIcon.svg'
 import {ReactComponent as Caret} from '../assets/CaretUp.svg'
 import DropDownCur from './DropDownCur';
 import MiniCart from './MiniCart'
-import '../styles/Navigation.scss'
+
 
 const CATEGORIES=gql`
 query TakeCategory {

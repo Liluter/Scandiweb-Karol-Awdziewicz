@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCards from '../components/ProductCards'
 import {ReactComponent as Spinner} from '../assets/Spinner.svg'
-import '../styles/Category.scss'
+
 
 class Category extends React.Component {
   constructor(props){

@@ -5,7 +5,6 @@ import { getCurrentCurrency , getShop} from '../redux/selectors'
 import { currencyNumber } from '../utils/currencyNumber';
 import Description from './Description';
 import VariantTypes from './VariantTypes';
-import '../styles/VariantBlock.scss'
 
 export class VariantBlock extends Component {
   constructor(props){
@@ -24,14 +23,14 @@ export class VariantBlock extends Component {
   }
 
   handleClick = (payload) => {
-    if (Object.entries(this.state.choices).length > 0){
+    if (Object.entries(this.state.choices).length === (this.props.product.attributes).length){
       if (Object.entries(this.props.shop.ItemsByIds).length > 0 ) {
         const MatchedIds = Object.entries(this.props.shop.ItemsByIds).filter((e)=>
           ( e[1].product.id === this.props.product.id  ))
         const FilteredCart = MatchedIds.map((item)=> 
           Object.entries( item[1].product.choices)).map((choice, index) => 
             choice.map((item, index) => 
-              item[1] == Object.entries(this.state.choices)[index][1] ))
+              item[1] === Object.entries(this.state.choices)[index][1] ))
         let IndexMatched = false ;
         FilteredCart.forEach((choice, index) => ( ( choice.every((e)=> e === true) ?  IndexMatched = index : null ) ));
         ((IndexMatched !== false) ?  this.toCartItemAdd(MatchedIds[IndexMatched][0])  : this.props.addToCart(payload) );
@@ -62,6 +61,7 @@ export class VariantBlock extends Component {
     let { brand, name ,inStock , prices, description, id} = this.props.product
     let price = prices[currencyNumber(this.props.currentCurrency)].currency.symbol 
     + this.props.product.prices[currencyNumber(this.props.currentCurrency)].amount
+
     return (
       <aside  className='productDesc__block'>
         <h1 className='productDesc__block--header'>{brand}</h1>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/PhotoBlock.scss'
+
 
 export class PhotoBlock extends Component {
 

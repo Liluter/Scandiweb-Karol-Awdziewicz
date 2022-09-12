@@ -9,7 +9,7 @@ import { getCart,
   getCurrentCurrency, 
   getCurrentCurrencyLabel } from '../redux/selectors'
 import MiniCartItems from './MiniCartItems'
-import '../styles/MiniCart.scss'
+
 
 export class MiniCart extends Component {
   constructor(props){

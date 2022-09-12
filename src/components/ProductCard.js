@@ -4,7 +4,7 @@ import {currencyNumber} from '../utils/currencyNumber'
 import { connect } from 'react-redux'
 import { getCurrentCurrency } from '../redux/selectors'
 import { Link } from 'react-router-dom'
-import '../styles/ProductCard.scss'
+
 
 export class ProductCard extends Component {
   constructor(props){

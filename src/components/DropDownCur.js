@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {gql} from '@apollo/client'
 import {Query} from '@apollo/client/react/components'
-import '../styles/DropDownCur.scss';
+
 
 import { connect } from 'react-redux';  
 import { toggleCurrency } from '../redux/action'

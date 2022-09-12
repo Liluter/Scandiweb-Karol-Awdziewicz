@@ -1,0 +1,90 @@
+.miniCart{
+  @include display-theme(column, flex-start, flex-start);
+  position: absolute;
+  z-index:2;
+  width: 325px;
+  max-height: 677px;
+  top: 78px;
+  right: -39px;
+  padding: 32px 16px;
+  gap: 32px;
+  background: $background-color;
+  cursor: default;
+  &__header{
+      background-color: $background-color;
+      @include font-theme($primary-font,$primary-style,$primary-weight,$primary-size,160%);
+      width: 118px;
+      height: 26px;
+      color: $primary-dark-color;
+      &--bold{
+        font-weight: 700;
+      }
+    }
+    &__total{
+      width: 293px;
+      @include display-theme(row, space-between, unset);
+      height:28px;
+      &--text{
+        @include display-theme(row, unset, flex-end);
+        height: 26px;
+        @include font-theme($secondary-font,$primary-style,600,$primary-size,18px);
+      }
+      &--amount{
+        @include display-theme(row, unset, flex-start);
+        height: 26px;
+        @include font-theme($primary-font,$primary-style,700,$primary-size,160%);
+      }
+    }
+    &__footer{
+      width: 293px;
+      @include display-theme(row, space-between ,unset);
+      &--buttonBag{
+        width: 140px;
+        height: 43px;
+        @include font-theme($primary-font,$primary-style,600,14px,120%);
+        background-color: $background-color;
+        border: solid 1px $primary-dark-color;
+        cursor: pointer;
+        &:hover{
+          box-shadow: none;
+        }
+      }
+      &--buttonCheckout{
+        width: 140px;
+        height: 43px;
+        @include font-theme($primary-font,$primary-style,600,14px,120%);
+        background-color: $button-primary-color;
+        border: none;
+        color: $background-color;
+        cursor: pointer;
+      }
+    }
+  &__content{
+    position: relative;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: $button-primary-color $scroll-secondary;
+    &:hover{
+      overflow-y: scroll;
+    }
+    &:hover::-webkit-scrollbar{
+      width: 6px;
+    }
+    &:hover::-webkit-scrollbar-track{
+      background: $scroll-secondary;
+    }
+    &:hover::-webkit-scrollbar-thumb{
+      width: 6px;
+      background: $button-primary-color;
+      border-radius: 3px;
+      box-shadow: inset 0 0 1px rgb(0, 0, 0); 
+    }
+    
+  }
+}
+  
+  @media screen and ( max-width: 600px) {
+    .miniCart{
+      right: 10px;
+    }
+  }

@@ -1,0 +1,33 @@
+.miniCartItem__variant--contentText{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+  .variant__label{
+    @include font-theme($primary-font,$primary-style,$primary-weight,14px,16px);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 16px;
+  }
+  .variant__options{
+    display:flex;
+    gap: 8px;
+    flex-wrap:wrap;
+    flex-shrink: 0;
+    width: 292px;
+    &--Btn{
+      width: 24px;
+      height: 24px;
+      background-color: $background-color;
+      border: 1px solid $primary-dark-color;
+      border-radius: 0;
+      @include font-theme($third-font,$primary-style,$primary-weight,14,160%);
+      @include transition (all 200ms ease);
+      &.selected{
+        background-color: $primary-dark-color;
+        color: $background-color;
+      }
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/TypeSwatch.scss'
+
 
 export class TypeSwatch extends Component {
   constructor(props){

@@ -1,62 +1,47 @@
 .miniCartItem{
   width: 293px;
-  display:flex;
-  flex-direction: row;
+  @include display-theme(row, unset, unset);
   flex-shrink: 0;
-  font-family: 'Raleway';
-  font-style: normal;
-  color: #1D1F22;
+  color: $primary-dark-color;
   margin-bottom: 40px;
   cursor: default;
   &__variant{
     width: 136px;
-    display:flex;
-    flex-direction: column;
+    @include display-theme(column, unset, unset);
     margin-right: 4px;
     &--header{
       height:26px;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 160%;
+      @include font-theme($primary-font,$primary-style,300,$primary-size,160%);
     }
     &--name{
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 160%;
+      @include font-theme($primary-font,$primary-style,300,$primary-size,160%);
       margin-bottom: 4px;
     }
     &--price{
       height: 26px;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 160%;
+      @include font-theme($primary-font,$primary-style,600,$primary-size,160%);
     }
   }
   &__counter{
     margin-right: 8px;
     height: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    @include display-theme(column, space-between, center);
     &--button{
       width:24px;
       height:24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #1D1F22;
-      background-color: #ffffff;
+      @include display-theme(row, center, center);
+      border: 1px solid $primary-dark-color;
+      background-color: $background-color;
       cursor: pointer;
       transition: 200ms ease;
       &:hover{
-        background-color: #1D1F22;
+        background-color: $primary-dark-color;
       }
       &:hover :first-child {
-        stroke: #ffffff;
+        stroke: $background-color;
       }
       &:hover :nth-child(2){
-        stroke: #ffffff;
+        stroke: $background-color;
       }
       &.toDelete{
         display: flex;
@@ -78,11 +63,7 @@
       }
     }
     &--actualCount{
-      font-family: 'Raleway';
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 160%;
+      @include font-theme($primary-font,$primary-style,600,$primary-size,160%);
     }
 
   }
@@ -90,10 +71,9 @@
     background-color: transparent;
     width: 121px;
     height: 190px;
-    display: flex;
-    align-items: center;
+    @include display-theme(row, unset, center);
     &--image{
-      transition: all 200ms ease;
+      @include transition(all 200ms ease);
       width:121px;
       height: 190px;
       object-fit: contain;

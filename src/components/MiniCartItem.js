@@ -6,7 +6,7 @@ import { currencyNumber } from '../utils/currencyNumber'
 import {ReactComponent as Plus} from '../assets/Plus.svg'
 import {ReactComponent as Minus} from '../assets/Minus.svg'
 import VariantTypesMiniCart from './VariantTypesMiniCart'
-import '../styles/MiniCartItem.scss'
+
 
 export class MiniCartItem extends Component {
   constructor(props) {

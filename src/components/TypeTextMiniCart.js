@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/TypeTextMiniCart.scss'
 
 export class TypeTextMiniCart extends  Component {
   constructor(props){
