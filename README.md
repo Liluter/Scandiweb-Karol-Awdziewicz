@@ -2,7 +2,7 @@
 
 
 Author : Karol Awdziewicz
-karoladziewicz@gmail.com
+karolawdziewicz@gmail.com
 ===
 
 
